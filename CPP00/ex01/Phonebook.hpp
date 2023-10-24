@@ -4,17 +4,26 @@
 
 #include "Contact.hpp"
 
-class Phonebook {
-public:
+class Phonebook
+{
+	public:
 
-	Phonebook(void);
-	~Phonebook(void);
-	const Contact *getContact(int index) const;
+		Phonebook(void);
+		~Phonebook(void);
+		Contact& getContact(int index);
+		void		addContact(Contact &contact);
+		int		searchContact(void) const;
+		void		exit(void) const;
+		int			getIndex(void) const;
+		int			setIndex(int index);
+		void		printContact(void) const;
+		std::string setContact(std::string input);
+		// void 		printContact(Contact &contact) const;
 
-private:
+	private:
 
-	Contact _contacts[8];
-	int		_index;
+		Contact _contact[8];
+		int		_index;
 
 };
 # endif

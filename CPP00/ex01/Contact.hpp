@@ -3,6 +3,9 @@
 
 # include <string>
 # include <iostream>
+# include <iomanip>
+# include <limits>
+# include <algorithm>
 
 class Contact
 {
@@ -20,6 +23,7 @@ public:
 	void 		set_Nickname(std::string nickname);
 	void 		set_PhoneNumber(std::string phoneNumber);
 	void 		set_DarkestSecret(std::string darkestSecret);
+	void 		printContact(void) const;
 
 private:
 

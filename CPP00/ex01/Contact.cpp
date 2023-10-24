@@ -2,12 +2,12 @@
 
 Contact::Contact()
 {
-
+	std::cout << "Constructor contact" << std::endl;
 }
 
 Contact::~Contact()
 {
-
+	std::cout << "Destructor contact" << std::endl;
 }
 
 std::string Contact::get_FirstName() const
@@ -58,4 +58,13 @@ void Contact::set_PhoneNumber(std::string phoneNumber)
 void Contact::set_DarkestSecret(std::string darkestSecret)
 {
 	_darkestSecret = darkestSecret;
+}
+
+void Contact::printContact() const
+{
+	std::cout << "First name: " << this->_firstName << std::endl;
+	std::cout << "Last name: " << this->_lastName << std::endl;
+	std::cout << "Nickname: " << this->_nickname << std::endl;
+	std::cout << "Phone number: " << this->_phoneNumber << std::endl;
+	std::cout << "Darkest secret: " << this->_darkestSecret << std::endl;
 }
