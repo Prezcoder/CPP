@@ -1,19 +1,12 @@
 
 #include "Phonebook.hpp"
 
-Phonebook::Phonebook(void){
-    std::cout << "Constructor called" << std::endl;
-    return ;
-}
-
-Phonebook::~Phonebook(void){
-    std::cout << "Destructor called" << std::endl;
-    return ;
-}
-
-int main()
+Phonebook::Phonebook(void)
 {
-    Phonebook instance;
+	std::cout << "Constructor called" << std::endl;
+}
 
-    return 0;
+Phonebook::~Phonebook(void)
+{
+	std::cout << "Destructor called" << std::endl;
 }

@@ -1,6 +1,8 @@
-SRCS =	phonebook.class.cpp \
+SRCS =	Phonebook.cpp	\
+		Contact.cpp		\
+		main.cpp		\
 
-HEADERS = -I phonebook.class.hpp
+HEADERS = -I phonebook.hpp
 OBJS_DIR = ./obj/
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)%.o)
 

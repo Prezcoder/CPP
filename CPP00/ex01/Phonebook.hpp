@@ -2,18 +2,19 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include <string>
-# include <iostream>
+#include "Contact.hpp"
 
 class Phonebook {
 public:
 
-    Phonebook(void);
-    ~Phonebook(void);
+	Phonebook(void);
+	~Phonebook(void);
+	const Contact *getContact(int index) const;
+
+private:
+
+	Contact _contacts[8];
+	int		_index;
+
 };
-
-// class   contact{
-
-// };
-
 # endif
