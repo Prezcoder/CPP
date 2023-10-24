@@ -1,9 +1,16 @@
 
 #include "Phonebook.hpp"
 
-int main()
+#include <iostream>
+#include <string>
+
+#include <iostream>
+#include <string>
+
+int main() 
 {
 	Phonebook phonebook;
+	std::string input;
 	std::string command;
 	int index;
 
@@ -11,34 +18,50 @@ int main()
 	std::cout << "Commands: ADD, SEARCH, EXIT" << std::endl;
 	std::cout << "Please enter a command:" << std::endl;
 	std::cout << "> ";
-	while(std::cin >> command && command != "EXIT")
+
+	while (std::getline(std::cin, input) && input != "EXIT")
 	{
-		if (command == "ADD")
+		if (input == "ADD")
 		{
 			if (phonebook.getIndex() < 8)
 				phonebook.addContact(phonebook.getContact(phonebook.getIndex()));
 			else
-				{
-					std::cout << "Phonebook is full" << std::endl;
-					std::cout << "We will overwrite the first contact" << std::endl;
-					phonebook.setIndex(0);
-				}
-		}
-		else if (command == "SEARCH")
-		{
-			if(phonebook.searchContact() != 1)
 			{
-				std::cout << "Index: ";
-				std::cin >> index;
-				if (index >= 0 && index < phonebook.getIndex())
-					phonebook.getContact(index).printContact();
-				else
-					std::cout << "Invalid index" << std::endl;
+				std::cout << "ATTENTION : the Phonebook is full" << std::endl;
+				std::cout << "If you want to overwrite the first contact" << std::endl;
+				std::cout << "Please enter ADD:" << std::endl;
+				std::cout << "> ";
+				phonebook.setIndex(0);
+				phonebook.setIndexContact(8);
 			}
+			std::cout << "Please enter a command:" << std::endl;
+			std::cout << "> ";
 		}
-		else
-			std::cout << "Invalid command" << std::endl;
+		else if (input == "SEARCH")
+		{
+			if (phonebook.searchContact() != 1)
+			{
+				bool validIndex = false;
+				while (!validIndex)
+				{
+					std::cout << "Index: ";
+					if (std::cin >> index)
+					{
+						if (index >= 0 && index < phonebook.getIndex())
+						{
+							phonebook.getContact(index).printContact();
+							validIndex = true;
+						}
+						else
+							std::cout << "Invalid index" << std::endl;
+					}
+				}
+			} 
+		}
+		else if (input != "SEARCH" || input != "ADD" || input != "EXIT")
+			std::cout << "> ";
 	}
 	phonebook.exit();
 	return 0;
 }
+

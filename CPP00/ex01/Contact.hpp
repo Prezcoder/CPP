@@ -6,6 +6,7 @@
 # include <iomanip>
 # include <limits>
 # include <algorithm>
+# include <sstream>
 
 class Contact
 {

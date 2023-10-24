@@ -4,6 +4,7 @@
 Phonebook::Phonebook(void)
 {
 	this->_index = 0;
+	this->_indexContact = 0;
 	std::cout << "Constructor phonebook called" << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
@@ -21,17 +22,15 @@ Contact& Phonebook::getContact(int index)
 
 std::string Phonebook::setContact(std::string input)
 {
-	std::string str;
+	std::string str = "";
 
 	do
 	{
 		std::cout << input;
-		std::cin >> str;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		if (str.length() > 0 && str.length() < 20)
-			break;
-		std::cout << "Invalid length" << std::endl;
-	} while (std::cin && str.length() > 0 && str.length() < 20);
+		std::getline(std::cin, str);
+ 		if (std::cin.fail())
+				std::exit(-1);
+	} while (str.empty());
 	return str;
 }
 
@@ -48,7 +47,8 @@ void Phonebook::addContact(Contact &contact)
 int Phonebook::searchContact(void) const
 {
 	std::cout << "Search contact" << std::endl;
-	
+	int	index;
+
 	if(this->_index == 0)
 		{
 			std::cout << "Phonebook is empty" << std::endl;
@@ -56,8 +56,12 @@ int Phonebook::searchContact(void) const
 		}
 	else
 	{
+		if (this->_index > this->_indexContact)
+			index = this->_index;
+		else
+			index = this->_indexContact;
 		std::cout << "     Index|First name| Last name|  Nickname" << std::endl;
-		for (int i = 0; i < this->_index; i++)
+		for (int i = 0; i < index; i++)
 		{
 			std::string firstName = this->_contact[i].get_FirstName();
 			std::string lastName = this->_contact[i].get_LastName();
@@ -92,4 +96,15 @@ int	Phonebook::setIndex(int index)
 {
 	this->_index = index;
 	return this->_index;
+}
+
+int Phonebook::getIndexContact(void) const
+{
+	return this->_indexContact;
+}
+
+int	Phonebook::setIndexContact(int index)
+{
+	this->_indexContact = index;
+	return this->_indexContact;
 }
