@@ -5,6 +5,8 @@ Phonebook::Phonebook(void)
 {
 	this->_index = 0;
 	std::cout << "Constructor phonebook called" << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
 }
 
 Phonebook::~Phonebook(void)
@@ -57,10 +59,19 @@ int Phonebook::searchContact(void) const
 		std::cout << "     Index|First name| Last name|  Nickname" << std::endl;
 		for (int i = 0; i < this->_index; i++)
 		{
-			std::cout << std::setw(10) << i << "|";
-			std::cout << std::setw(10) << this->_contact[i].get_FirstName() << "|";
-			std::cout << std::setw(10) << this->_contact[i].get_LastName() << "|";
-			std::cout << std::setw(10) << this->_contact[i].get_Nickname() << std::endl;
+			std::string firstName = this->_contact[i].get_FirstName();
+			std::string lastName = this->_contact[i].get_LastName();
+			std::string nickname = this->_contact[i].get_Nickname();
+			if (firstName.length() > 10)
+				firstName = firstName.substr(0, 9) + ".";
+			if (lastName.length() > 10)
+				lastName = lastName.substr(0, 9) + ".";
+			if (nickname.length() > 10)
+				nickname = nickname.substr(0, 9) + ".";
+	   		std::cout << std::setw(10) << i << "|";
+            std::cout << std::setw(10) << firstName << "|";
+            std::cout << std::setw(10) << lastName << "|";
+            std::cout << std::setw(10) << nickname << std::endl;
 		}
 		return 0;
 	}

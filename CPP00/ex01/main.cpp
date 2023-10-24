@@ -7,6 +7,10 @@ int main()
 	std::string command;
 	int index;
 
+	std::cout << "Welcome to the Phonebook" << std::endl;
+	std::cout << "Commands: ADD, SEARCH, EXIT" << std::endl;
+	std::cout << "Please enter a command:" << std::endl;
+	std::cout << "> ";
 	while(std::cin >> command && command != "EXIT")
 	{
 		if (command == "ADD")
