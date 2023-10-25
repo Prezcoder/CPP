@@ -1,3 +1,4 @@
+
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
@@ -7,6 +8,11 @@
 # include <limits>
 # include <algorithm>
 # include <sstream>
+# include <cctype>
+
+using std::cout;
+using std::endl;
+using std::cin;
 
 class Contact
 {

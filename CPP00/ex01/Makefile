@@ -3,7 +3,6 @@ SRCS =	Phonebook.cpp	\
 		main.cpp		\
 
 HEADERS = -I Phonebook.hpp \
-			# -I Contact.hpp \
 
 OBJS_DIR = ./obj/
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)%.o)

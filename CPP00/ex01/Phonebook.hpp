@@ -10,9 +10,10 @@ class Phonebook
 
 		Phonebook(void);
 		~Phonebook(void);
-		Contact& getContact(int index);
+		Contact& 	getContact(int index);
 		void		addContact(Contact &contact);
 		int			searchContact(void) const;
+		void		welcome(void) const;
 		void		exit(void) const;
 		int			getIndex(void) const;
 		int			setIndex(int index);
@@ -21,6 +22,8 @@ class Phonebook
 		void		printContact(void) const;
 		std::string setContact(std::string input);
 		// void 		printContact(Contact &contact) const;
+		void		doSearch(Phonebook &phonebook) const;
+		void		doAdd(Phonebook &phonebook) const;
 
 	private:
 
@@ -29,4 +32,5 @@ class Phonebook
 		int		_indexContact;
 
 };
+
 # endif

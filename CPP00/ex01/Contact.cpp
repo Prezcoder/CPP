@@ -1,13 +1,14 @@
+
 #include "Contact.hpp"
 
 Contact::Contact()
 {
-	std::cout << "Constructor contact" << std::endl;
+	cout << "Constructor contact" << endl;
 }
 
 Contact::~Contact()
 {
-	std::cout << "Destructor contact" << std::endl;
+	cout << "Destructor contact" << endl;
 }
 
 std::string Contact::get_FirstName() const
@@ -62,9 +63,13 @@ void Contact::set_DarkestSecret(std::string darkestSecret)
 
 void Contact::printContact() const
 {
-	std::cout << "First name: " << this->_firstName << std::endl;
-	std::cout << "Last name: " << this->_lastName << std::endl;
-	std::cout << "Nickname: " << this->_nickname << std::endl;
-	std::cout << "Phone number: " << this->_phoneNumber << std::endl;
-	std::cout << "Darkest secret: " << this->_darkestSecret << std::endl;
+	cout << "First name    : " << this->_firstName << endl;
+	cout << "Last name     : " << this->_lastName << endl;
+	cout << "Nickname      : " << this->_nickname << endl;
+	cout << "Phone number  : " << this->_phoneNumber << endl;
+	cout << "Darkest secret: " << this->_darkestSecret << endl;
+	cout << endl;
+	cout << "Back to main menu" << endl;
+	cout << "Please enter a command:" << endl;
+	cout << "> ";
 }
