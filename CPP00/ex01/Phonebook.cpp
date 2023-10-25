@@ -1,7 +1,7 @@
 
 #include "Phonebook.hpp"
 
-Phonebook::Phonebook(void)
+PhoneBook::PhoneBook(void)
 {
 	this->_index = 0;
 	this->_indexContact = 0;
@@ -10,7 +10,7 @@ Phonebook::Phonebook(void)
 	cout << endl;
 }
 
-void Phonebook::welcome(void) const
+void PhoneBook::welcome(void) const
 {
 	cout << "Welcome to the Phonebook" << endl;
 	cout << "Commands: ADD, SEARCH, EXIT" << endl;
@@ -18,17 +18,17 @@ void Phonebook::welcome(void) const
 	cout << "> ";
 }
 
-Phonebook::~Phonebook(void)
+PhoneBook::~PhoneBook(void)
 {
 	cout << "Destructor phonebook called" << endl;
 }
 
-Contact& Phonebook::getContact(int index)
+Contact& PhoneBook::getContact(int index)
 {
 	return this->_contact[index];
 }
 
-std::string Phonebook::setContact(std::string input)
+std::string PhoneBook::setContact(std::string input)
 {
 	std::string str = "";
 
@@ -48,19 +48,19 @@ std::string Phonebook::setContact(std::string input)
 	return str;
 }
 
-void Phonebook::addContact(Contact &contact)
+void PhoneBook::addContact(Contact &contact)
 {
-	contact.set_FirstName(Phonebook::setContact("Firstname     : "));
-	contact.set_LastName(Phonebook::setContact("Lastname      : "));
-	contact.set_Nickname(Phonebook::setContact("Nickname      : "));
-	contact.set_PhoneNumber(Phonebook::setContact("Phone number  : "));
-	contact.set_DarkestSecret(Phonebook::setContact("Darkest secret: "));
+	contact.set_FirstName(PhoneBook::setContact("Firstname     : "));
+	contact.set_LastName(PhoneBook::setContact("Lastname      : "));
+	contact.set_Nickname(PhoneBook::setContact("Nickname      : "));
+	contact.set_PhoneNumber(PhoneBook::setContact("Phone number  : "));
+	contact.set_DarkestSecret(PhoneBook::setContact("Darkest secret: "));
 	cout << "Contact added" << endl;
 	cout << endl;
 	this->_index++;
 }
 
-void Phonebook::doAdd(Phonebook &phonebook) const
+void PhoneBook::doAdd(PhoneBook &phonebook) const
 {
 	if (phonebook.getIndex() < 8)
 		phonebook.addContact(phonebook.getContact(phonebook.getIndex()));
@@ -78,29 +78,29 @@ void Phonebook::doAdd(Phonebook &phonebook) const
 }
 
 
-int Phonebook::getIndex(void) const
+int PhoneBook::getIndex(void) const
 {
 	return this->_index;
 }
 
-int	Phonebook::setIndex(int index)
+int	PhoneBook::setIndex(int index)
 {
 	this->_index = index;
 	return this->_index;
 }
 
-int Phonebook::getIndexContact(void) const
+int PhoneBook::getIndexContact(void) const
 {
 	return this->_indexContact;
 }
 
-int	Phonebook::setIndexContact(int index)
+int	PhoneBook::setIndexContact(int index)
 {
 	this->_indexContact = index;
 	return this->_indexContact;
 }
 
-int Phonebook::searchContact(void) const
+int PhoneBook::searchContact(void) const
 {
 	cout << "Search contact" << endl;
 	int	index;
@@ -117,7 +117,7 @@ int Phonebook::searchContact(void) const
 			index = this->_index;
 		else
 			index = this->_indexContact;
-		cout << "     Index|First name| Last name|  Nickname" << endl;
+		cout << "   Index #|First name| Last name|  Nickname" << endl;
 		for (int i = 0; i < index; i++)
 		{
 			std::string firstName = this->_contact[i].get_FirstName();
@@ -139,7 +139,7 @@ int Phonebook::searchContact(void) const
 	return 0;
 }
 
-void	Phonebook::doSearch(Phonebook &phonebook) const
+void	PhoneBook::doSearch(PhoneBook &phonebook) const
 {
 	int index(0);
 	std::string input;
@@ -183,7 +183,7 @@ void	Phonebook::doSearch(Phonebook &phonebook) const
 	}
 }
 
-void Phonebook::exit(void) const
+void PhoneBook::exit(void) const
 {
 	cout << endl;
 	cout << "Exiting...and don't worry...we'll forget your Phonebook!" << endl;

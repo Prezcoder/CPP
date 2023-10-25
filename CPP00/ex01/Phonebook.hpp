@@ -4,13 +4,14 @@
 
 #include "Contact.hpp"
 
-class Phonebook
+class PhoneBook
 {
 	public:
 
-		Phonebook(void);
-		~Phonebook(void);
+		PhoneBook(void);
+		~PhoneBook(void);
 		Contact& 	getContact(int index);
+		std::string setContact(std::string input);
 		void		addContact(Contact &contact);
 		int			searchContact(void) const;
 		void		welcome(void) const;
@@ -20,10 +21,8 @@ class Phonebook
 		int			getIndexContact(void) const;
 		int			setIndexContact(int index);
 		void		printContact(void) const;
-		std::string setContact(std::string input);
-		// void 		printContact(Contact &contact) const;
-		void		doSearch(Phonebook &phonebook) const;
-		void		doAdd(Phonebook &phonebook) const;
+		void		doSearch(PhoneBook &phonebook) const;
+		void		doAdd(PhoneBook &phonebook) const;
 
 	private:
 
