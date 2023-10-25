@@ -5,9 +5,6 @@
 # include <string>
 # include <iostream>
 # include <iomanip>
-# include <limits>
-# include <algorithm>
-# include <sstream>
 # include <cctype>
 
 using std::cout;
