@@ -11,7 +11,7 @@ int main (int argc, char **argv)
 		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	for (int i(1); argv[i]; i++)
 		for (int j(0); argv[i][j]; j++)
-				cout << (char) toupper(argv[i][j]);
+				cout << (char) std::toupper(argv[i][j]);
 	cout << endl;
 	return 0;
 }

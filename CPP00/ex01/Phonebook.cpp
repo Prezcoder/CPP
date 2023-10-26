@@ -1,16 +1,14 @@
 
 #include "Phonebook.hpp"
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook() : _index(0), _indexContact(0)
 {
-	this->_index = 0;
-	this->_indexContact = 0;
 	cout << "Constructor phonebook called" << endl;
 	cout << endl;
 	cout << endl;
 }
 
-void PhoneBook::welcome(void) const
+void PhoneBook::welcome() const
 {
 	cout << "Welcome to the Phonebook" << endl;
 	cout << "Commands: ADD, SEARCH, EXIT" << endl;
@@ -18,7 +16,7 @@ void PhoneBook::welcome(void) const
 	cout << "> ";
 }
 
-PhoneBook::~PhoneBook(void)
+PhoneBook::~PhoneBook()
 {
 	cout << "Destructor phonebook called" << endl;
 }
@@ -78,7 +76,7 @@ void PhoneBook::doAdd(PhoneBook &phonebook) const
 }
 
 
-int PhoneBook::getIndex(void) const
+int PhoneBook::getIndex() const
 {
 	return this->_index;
 }
@@ -89,7 +87,7 @@ int	PhoneBook::setIndex(int index)
 	return this->_index;
 }
 
-int PhoneBook::getIndexContact(void) const
+int PhoneBook::getIndexContact() const
 {
 	return this->_indexContact;
 }
@@ -100,7 +98,7 @@ int	PhoneBook::setIndexContact(int index)
 	return this->_indexContact;
 }
 
-int PhoneBook::searchContact(void) const
+int PhoneBook::searchContact() const
 {
 	cout << "Search contact" << endl;
 	int	index;
@@ -143,6 +141,7 @@ void	PhoneBook::doSearch(PhoneBook &phonebook) const
 {
 	int index(0);
 	std::string input;
+	int	maxIndex;
 
 	if (phonebook.searchContact() != 1) {
 		bool validIndex = false;
@@ -158,7 +157,11 @@ void	PhoneBook::doSearch(PhoneBook &phonebook) const
 					cout << endl;
 					continue;
 				}
-				if (index >= 0 && index < phonebook.getIndex()) {
+				if (this->_index > this->_indexContact)
+					maxIndex = this->_index;
+				else
+					maxIndex = this->_indexContact;
+				if (index >= 0 && index < maxIndex) {
 					cout << endl;
 					cout << "Here's the contact " << index << ":" << endl;
 					cout << endl;

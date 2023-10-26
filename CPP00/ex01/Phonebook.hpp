@@ -20,7 +20,6 @@ class PhoneBook
 		int			setIndex(int index);
 		int			getIndexContact(void) const;
 		int			setIndexContact(int index);
-		void		printContact(void) const;
 		void		doSearch(PhoneBook &phonebook) const;
 		void		doAdd(PhoneBook &phonebook) const;
 
