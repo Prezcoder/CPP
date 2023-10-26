@@ -5,4 +5,5 @@ int main(){
 	z->announce();
 	randomChump("Frank");
 	delete z;
+	return (0);
 }

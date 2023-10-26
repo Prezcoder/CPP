@@ -14,16 +14,17 @@ using std::string;
 class Zombie
 {
 public:
-	Zombie(string name);
+	// Zombie(string name);
+	Zombie(void);
 	~Zombie(void);
-	void announce( void );
+	void	setName(string name);
+	void 	announce( void );
 
 private:
 	string _name;
 
 };
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+Zombie* zombieHorde( int N, std::string name );
 
 #endif

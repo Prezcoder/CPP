@@ -1,8 +1,7 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(string name)
+Zombie::Zombie(string name) : _name(name)
 {
-	this->_name = name;
 	cout << "Zombie " << this->_name << " rises" << endl;
 }
 
