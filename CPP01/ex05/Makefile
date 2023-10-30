@@ -1,9 +1,7 @@
 SRCS =	main.cpp		\
 		Harl.cpp		\
 
-
 HEADERS = -I Harl.hpp	\
-
 
 OBJS_DIR = ./obj/
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)%.o)

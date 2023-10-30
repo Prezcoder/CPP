@@ -1,3 +1,4 @@
+
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
@@ -11,13 +12,13 @@ using std::string;
 
 class Zombie
 {
-public:
-	Zombie(string name);
-	~Zombie(void);
-	void announce( void );
+	public:
+		Zombie(string name);
+		~Zombie(void);
+		void announce( void );
 
-private:
-	string _name;
+	private:
+		string _name;
 
 };
 

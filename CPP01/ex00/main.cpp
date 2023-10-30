@@ -1,6 +1,8 @@
+
 #include "Zombie.hpp"
 
-int main() {
+int main()
+{
 	Zombie *z = newZombie("Grand Emman");
 	z->announce();
 	randomChump("Frank");

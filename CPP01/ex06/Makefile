@@ -1,16 +1,12 @@
 SRCS =	main.cpp		\
-		HumanA.cpp		\
-		HumanB.cpp		\
-		Weapon.cpp		\
+		Harl.cpp		\
 
-HEADERS = 	-I Weapon.hpp		\
-			-I HumanA.hpp		\
-		  	-I HumanB.hpp		\
+HEADERS = -I Harl.hpp	\
 
 OBJS_DIR = ./obj/
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)%.o)
 
-NAME = weapon
+NAME = HarlFilter
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -28,15 +24,15 @@ $(OBJS_DIR)%.o:%.cpp
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(HEADERS) $(OBJS) -o $(NAME)
-	@echo "${GREEN}WEAPON COMPILED${NC}"
+	@echo "${GREEN}HARLFILTER COMPILED${NC}"
 
 clean:
 	@rm -rf $(OBJS_DIR)
-	@echo "${RED}WEAPON OBJECTS DELETED${NC}"
+	@echo "${RED}HARLFILTER OBJECTS DELETED${NC}"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "${RED}WEAPON DELETED${NC}"
+	@echo "${RED}HARLFILTER DELETED${NC}"
 
 bonus: re
 

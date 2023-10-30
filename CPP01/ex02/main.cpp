@@ -1,3 +1,4 @@
+
 #include <string>
 #include <iostream>
 
@@ -5,7 +6,8 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int main() {
+int main()
+{
 	string brain("HI THIS IS BRAIN");
 
 	string* stringPTR = &brain;

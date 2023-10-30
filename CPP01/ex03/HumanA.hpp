@@ -6,16 +6,16 @@
 
 class HumanA
 {
-public:
-	HumanA(string name, Weapon &weapon);
-	~HumanA(void);
-	void attack(void);
-	void setWeapon(Weapon weapon);
-	void setName(string name);
+	public:
+		HumanA(string name, Weapon &weapon);
+		~HumanA(void);
+		void attack(void);
+		void setWeapon(Weapon weapon);
+		void setName(string name);
 
-private:
-	string _name;
-	Weapon &_weapon;
+	private:
+		string _name;
+		Weapon &_weapon;
 
 };
 

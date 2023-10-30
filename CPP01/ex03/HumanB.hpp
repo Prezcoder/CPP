@@ -6,17 +6,17 @@
 
 class HumanB
 {
-public:
-    HumanB(string name);
-    ~HumanB(void);
-    void attack(void);
-    void setWeapon(Weapon &weapon);
-    void setName(string name);
+	public:
+		HumanB(string name);
+		~HumanB(void);
+		void attack(void);
+		void setWeapon(Weapon &weapon);
+		void setName(string name);
 
 
-private:
-    string _name;
-    Weapon *_weapon;
+	private:
+		string _name;
+		Weapon *_weapon;
 
 };
 
