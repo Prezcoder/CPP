@@ -14,6 +14,6 @@ void Weapon::setType(string type) {
 	this->_type = type;
 }
 
-string Weapon::getType() const {
+string const &Weapon::getType() {
 	return this->_type;
 }
