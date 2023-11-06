@@ -4,7 +4,6 @@
 int main()
 {
 	ClapTrap claptrap("Fred");
-	ClapTrap copy(claptrap);
 
 	claptrap.attack("Gros Jambon");
 	claptrap.takeDamage(5);
@@ -19,6 +18,8 @@ int main()
 	claptrap.attack("Gros Jambon");
 	claptrap.attack("Gros Jambon");
 	claptrap.attack("Gros Jambon");
+	claptrap.attack("Gros Jambon");
+	claptrap.beRepaired(3);
 	claptrap.attack("Gros Jambon");
 	claptrap.takeDamage(5);
 
