@@ -31,7 +31,7 @@ int Fixed::toInt( void ) const {
 }
 
 Fixed &Fixed::operator=(const Fixed &fixed) {
-	cout << "Copy assignment operator called" << endl;
+	// cout << "Copy assignment operator called" << endl;
 	if (this != &fixed)
 		this->_fixedPointValue = fixed.getRawBits();
 	return *this;
