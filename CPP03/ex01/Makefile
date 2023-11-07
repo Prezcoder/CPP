@@ -1,9 +1,12 @@
+
 NAME = ClapTrap
 
 SRCS =	main.cpp		\
-		ClapTrap.cpp		\
+		ClapTrap.cpp	\
+		ScavTrap.cpp	\
 
 HEADERS = ClapTrap.hpp	\
+		  ScavTrap.hpp	\
 
 OBJS_DIR = ./obj/
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)%.o)

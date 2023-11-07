@@ -4,7 +4,7 @@
 ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	cout << "Default constructor just arrived!" << endl;
 }
-
+ 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	cout << "ClapTrap " << name << " just arrived!" << endl;
 
@@ -35,6 +35,11 @@ void	ClapTrap::attack(std::string const& target) {
 	if (this->_energyPoints <= 0 && this->_hitPoints > 0)
 	{
 		cout << "ClapTrap " << this->_name << " has no energy points!" << endl;
+		return ;
+	}
+	if (this->_hitPoints == 0)
+	{
+		cout << "ClapTrap " << this->_name << " is dead and can't attack!" << endl;
 		return ;
 	}
 	if (this->_energyPoints > 0 && this->_hitPoints > 0)

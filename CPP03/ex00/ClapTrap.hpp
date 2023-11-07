@@ -20,6 +20,7 @@ public:
 	void	beRepaired(unsigned int amount);
 
 private:
+	ClapTrap();
 	std::string		_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
