@@ -14,8 +14,13 @@ Dog::Dog(const Dog &copy) : Animal(copy) {
 
 Dog &Dog::operator=(const Dog &copy) {
 	cout << "Dog assignation operator called" << endl;
+	if (this->_brain)
+		delete this->_brain;
 	if (this != &copy)
+	{
 		_type = copy._type;
+		_brain = new Brain(*copy._brain);
+	}
 	return (*this);
 }
 
