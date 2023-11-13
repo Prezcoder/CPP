@@ -8,7 +8,7 @@
 
 int main()
 {
-// const AAnimal* meta = new AAnimal(); // Not possible
+// const AAnimal* meta = new AAnimal(); 
 const AAnimal* j = new Dog();
 const AAnimal* i = new Cat();
 cout << "----------------------------------------" << endl;
@@ -28,6 +28,7 @@ meta3->makeSound();
 i3->makeSound();
 cout << "----------------------------------------" << endl;
 Cat cat;
+cat = Cat();
 cout << cat.getBrain()->getIdeas(7) << endl;
 cout << "----------------------------------------" << endl;
 

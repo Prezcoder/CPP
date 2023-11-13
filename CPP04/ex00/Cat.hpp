@@ -13,7 +13,7 @@ class Cat : public Animal
 
 		Cat &operator=(const Cat &copy);
 
-		void makeSound() const;
+		virtual void makeSound() const;
 
 	private:
 

@@ -14,8 +14,8 @@ class Cat : public AAnimal
 
 		Cat &operator=(const Cat &copy);
 
-		void makeSound() const;
-		virtual Brain *getBrain() const;
+		virtual void makeSound() const;
+		Brain *getBrain() const;
 
 	private:
 		Brain *_brain;
