@@ -2,20 +2,20 @@
 #include "AAnimal.hpp"
 
 AAnimal::AAnimal() : _type("Animal") {
-	cout << "Animal default constructor called" << endl;
+	cout << "AAnimal default constructor called" << endl;
 }
 
 AAnimal::AAnimal(string type) : _type(type) {
-	cout << "Animal " << this->_type << " constructor called" << endl;
+	cout << "AAnimal " << this->_type << " constructor called" << endl;
 }
 
 AAnimal::AAnimal(const AAnimal &copy) {
-	cout << "Animal copy constructor called" << endl;
+	cout << "AAnimal copy constructor called" << endl;
 	*this = copy;
 }
 
 AAnimal &AAnimal::operator=(const AAnimal &copy) {
-	cout << "Animal assignation operator called" << endl;
+	cout << "AAnimal assignation operator called" << endl;
 	if (this != &copy)
 		_type = copy._type;
 	return (*this);
@@ -30,5 +30,5 @@ string AAnimal::getType() const {
 }
 
 AAnimal::~AAnimal() {
-	cout << "Animal destructor called" << endl;
+	cout << "AAnimal destructor called" << endl;
 }
