@@ -8,7 +8,6 @@ Cat::Cat() : AAnimal("Cat") {
 
 Cat::Cat(const Cat &copy) : AAnimal(copy) {
 	cout << "Cat copy constructor called" << endl;
-	this->_brain = new Brain(*copy._brain);
 	*this = copy;
 }
 
