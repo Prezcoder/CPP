@@ -3,55 +3,47 @@
 
 int main()
 {
-    Bureaucrat b1("b1", 1);
-    Bureaucrat b2("b2", 150);
-    Bureaucrat b3("b3", 151);
-    Bureaucrat b4("b4", 0);
-    Bureaucrat b5("b5", 42);
+	Bureaucrat Leon("Leon", 1);
+	Bureaucrat Arthur("Arthur", 150);
+	try{
+		Bureaucrat Smith("Smith", 151);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	try{
+		Bureaucrat Nicole("Nicole", 0);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	Bureaucrat Jeannine("Jeannine", 42);
 
-    std::cout << b1 << std::endl;
-    std::cout << b2 << std::endl;
-    std::cout << b3 << std::endl;
-    std::cout << b4 << std::endl;
-    std::cout << b5 << std::endl;
+	cout << Leon << endl;
+	cout << Arthur << endl;
+	cout << Jeannine << endl;
 
-    try{
-        b1.incrementGrade();
-    }
-    catch (std::exception &e){
-        std::cout << e.what() << std::endl;
-    }
-    try{
-        b2.decrementGrade();
-    }
-    catch (std::exception &e){
-        std::cout << e.what() << std::endl;
-    }
-    try{
-        b3.incrementGrade();
-    }
-    catch (std::exception &e){
-        std::cout << e.what() << std::endl;
-    }
-    try{
-        b4.decrementGrade();
-    }
-    catch (std::exception &e){
-        std::cout << e.what() << std::endl;
-    }
-    try{
-        b5.incrementGrade();
-    }
-    catch (std::exception &e){
-        std::cout << e.what() << std::endl;
-    }
+	try{
+		Leon.incrementGrade();
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	try{
+		Arthur.decrementGrade();
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	try{
+		Jeannine.incrementGrade();
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	cout << Leon << endl;
+	cout << Arthur << endl;
+	cout << Jeannine << endl;
 
-
-    std::cout << b1 << std::endl;
-    std::cout << b2 << std::endl;
-    std::cout << b3 << std::endl;
-    std::cout << b4 << std::endl;
-    std::cout << b5 << std::endl;
-
-    return (0);
+	return (0);
 }

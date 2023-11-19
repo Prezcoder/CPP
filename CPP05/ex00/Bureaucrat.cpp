@@ -6,9 +6,13 @@ Bureaucrat::Bureaucrat()
     cout << "Bureaucrat default constructor called" << endl;
 }
 
-Bureaucrat::Bureaucrat(const string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const string name, unsigned int grade) : _name(name), _grade(grade)
 {
 	cout << "Bureaucrat constructor called" << endl;
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy)
@@ -55,7 +59,7 @@ const string Bureaucrat::getName() const
 	return (_name);
 }
 
-int Bureaucrat::getGrade() const
+unsigned int Bureaucrat::getGrade() const
 {
 	return (_grade);
 }

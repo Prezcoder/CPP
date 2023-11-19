@@ -14,12 +14,12 @@ public:
     Bureaucrat(const Bureaucrat &copy);
     ~Bureaucrat();
 
-    Bureaucrat(const string name, int grade);
+    Bureaucrat(const string name, unsigned int grade);
 
     void incrementGrade();
     void decrementGrade();
     const string getName() const;
-    int getGrade() const;
+    unsigned int getGrade() const;
 
     Bureaucrat &operator=(const Bureaucrat &copy);
 
