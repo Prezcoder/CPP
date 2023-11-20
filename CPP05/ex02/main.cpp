@@ -1,6 +1,9 @@
 
 #include"Bureaucrat.hpp"
-#include"Form.hpp"
+#include"AForm.hpp"
+#include"PresidentialPardonForm.hpp"
+#include"RobotomyRequestForm.hpp"
+#include"ShrubberyCreationForm.hpp"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -61,15 +64,10 @@ int main()
 	cout << Arthur << endl;
 	cout << Jeannine << endl;
 	printTitle("Test 3: Init Form");
-	Form form("form", 42);
+	PresidentialPardonForm form("Form1");
+	printTitle("Test 3: Form initiated");
 	cout << form << endl;
 	printTitle("Test 4: Try to sign Form");
-	try{
-		Arthur.signForm(form);
-	}
-	catch (std::exception &e){
-		cout << e.what() << endl;
-	}
 	try{
 		Leon.signForm(form);
 	}
@@ -77,15 +75,30 @@ int main()
 		cout << e.what() << endl;
 	}
 	try{
-		Jeannine.signForm(form);
+		Arthur.signForm(form);
 	}
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
 	cout << form << endl;
-	printTitle("Test 5: Try to sign Form");
-	Form form2("form2", 1);
+	printTitle("Test 5: Try presidential pardon");
+	try{
+		Leon.executeForm(form);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	try{
+		Arthur.executeForm(form);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	printTitle("Test 6: Init RobotomyRequestForm");
+	RobotomyRequestForm form2("Form2");
+	printTitle("Test 6: RobotomyRequestForm initiated");
 	cout << form2 << endl;
+	printTitle("Test 7: Try to sign RobotomyRequestForm");
 	try{
 		Leon.signForm(form2);
 	}
@@ -98,13 +111,53 @@ int main()
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
+	cout << form2 << endl;
+	printTitle("Test 8: Try robotomy request");
 	try{
-		Jeannine.signForm(form2);
+		Leon.executeForm(form2);
 	}
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
-	cout << form2 << endl;
+	try{
+		Arthur.executeForm(form2);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	printTitle("Test 9: Init ShrubberyCreationForm");
+	ShrubberyCreationForm form3("Form3");
+	printTitle("Test 9: ShrubberyCreationForm initiated");
+	cout << form3 << endl;
+	printTitle("Test 10: Try to sign ShrubberyCreationForm");
+	try{
+		Leon.signForm(form3);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	try{
+		Arthur.signForm(form3);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	cout << form3 << endl;
+	printTitle("Test 11: Try shrubbery creation");
+	try{
+		Leon.executeForm(form3);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	try{
+		Arthur.executeForm(form3);
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
+	cout << endl;
+	cout << endl;
 
 	return (0);
 }
