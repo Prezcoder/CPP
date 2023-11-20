@@ -1,7 +1,10 @@
 
-#include"Bureaucrat.hpp"
-#include"AForm.hpp"
-#include"Intern.hpp"
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
