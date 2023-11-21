@@ -12,42 +12,36 @@ class Bureaucrat;
 
 class Form
 {
-public:
-	Form();
-	Form(const Form &copy);
-	~Form();
-
-	Form(const string name, unsigned int grade);
-	void beSigned(const Bureaucrat &b);
-
-	const string getName() const;
-	int getGrade() const;
-	bool getSigned() const;
-
-	Form &operator=(const Form &copy);
-
-	class GradeTooHighException : public std::exception
-	{
 	public:
-		virtual const char *what() const throw()
-		{
-			return ("Grade too high");
-		}
-	};
+		Form();
+		Form(const Form &copy);
+		~Form();
 
-	class GradeTooLowException : public std::exception
-	{
-	public:
-		virtual const char *what() const throw()
-		{
-			return ("Grade too low");
-		}
-	};
+		Form(const string name, unsigned int grade);
+		void beSigned(const Bureaucrat &b);
 
-	private:
-		const string _name;
-		const int _grade;
-		bool _signed;
+		const string getName() const;
+		int getGrade() const;
+		bool getSigned() const;
+
+		Form &operator=(const Form &copy);
+
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		private:
+			const string _name;
+			const int _grade;
+			bool _signed;
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &f);

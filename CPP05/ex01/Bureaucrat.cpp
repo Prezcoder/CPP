@@ -18,7 +18,6 @@ Bureaucrat::Bureaucrat(const string name, unsigned int grade) : _name(name), _gr
 Bureaucrat::Bureaucrat(const Bureaucrat &copy)
 {
 	cout << "Bureaucrat copy constructor called" << endl;
-
 	*this = copy;
 }
 
@@ -85,4 +84,12 @@ int Bureaucrat::getGrade() const
 Bureaucrat::~Bureaucrat()
 {
 	cout << "Bureaucrat destructor called" << endl;
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw() {
+	return ("Grade too high");
+}
+
+const char *Bureaucrat::GradeTooHighException::what(void) const throw() {
+	return ("Grade too high");
 }

@@ -1,24 +1,20 @@
 
 #include"Intern.hpp"
 
-Intern::Intern()
-{
+Intern::Intern() {
 	cout << "Intern default constructor called" << endl;
 }
 
-Intern::Intern(const Intern &copy)
-{
+Intern::Intern(const Intern &copy) {
 	cout << "Intern copy constructor called" << endl;
 	*this = copy;
 }
 
-Intern::~Intern()
-{
+Intern::~Intern() {
 	cout << "Intern destructor called" << endl;
 }
 
-Intern &Intern::operator=(const Intern &copy)
-{
+Intern &Intern::operator=(const Intern &copy) {
 	cout << "Intern assignation operator called" << endl;
 	if (this != &copy)
 	{
@@ -27,8 +23,7 @@ Intern &Intern::operator=(const Intern &copy)
 	return (*this);
 }
 
-AForm *Intern::makeForm(string name, string target)
-{
+AForm *Intern::makeForm(string name, string target) {
 	string formNames[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
 	AForm *forms[] = {new PresidentialPardonForm(target), new RobotomyRequestForm(target), new ShrubberyCreationForm(target)};
 	for (int i = 0; i < 3; i++)
