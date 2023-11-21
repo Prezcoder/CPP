@@ -23,15 +23,31 @@ Intern &Intern::operator=(const Intern &copy) {
 	return (*this);
 }
 
+static AForm *makePresident(const std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+static AForm *makeRobot(const std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm *makeShrubbery(const std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
 AForm *Intern::makeForm(string name, string target) {
 	string formNames[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-	AForm *forms[] = {new PresidentialPardonForm(target), new RobotomyRequestForm(target), new ShrubberyCreationForm(target)};
+	AForm *(*forms[])(const string target) = {&makePresident, &makeRobot, &makeShrubbery};
+	
 	for (int i = 0; i < 3; i++)
 	{
 		if (name == formNames[i])
 		{
 			cout << "Intern creates " << name << endl;
-			return (forms[i]);
+			return (forms[i](target));
 		}
 	}
 	throw NoFormFoundException();

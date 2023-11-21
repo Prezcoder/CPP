@@ -163,13 +163,15 @@ int main()
 	AForm *form4 = intern.makeForm("presidential pardon", "Form4");
 	AForm *form5 = intern.makeForm("robotomy request", "Form5");
 	AForm *form6 = intern.makeForm("shrubbery creation", "Form6");
-	AForm *form7;
+	AForm *form7 = nullptr;
+	cout << endl;
 	try{
 		form7 = intern.makeForm("Bad form", "Form7");
 	}
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
+	cout << endl;
 	cout << *form4 << endl;
 	cout << *form5 << endl;
 	cout << *form6 << endl;
@@ -180,18 +182,21 @@ int main()
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
+	cout << endl;
 	try{
 		Leon.signForm(*form5);
 	}
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
+	cout << endl;
 	try{
 		Leon.signForm(*form6);
 	}
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
+	cout << endl;
 	cout << *form4 << endl;
 	cout << *form5 << endl;
 	cout << *form6 << endl;
@@ -202,12 +207,14 @@ int main()
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
+	cout << endl;
 	try{
 		Leon.executeForm(*form5);
 	}
 	catch (std::exception &e){
 		cout << e.what() << endl;
 	}
+	cout << endl;
 	try{
 		Leon.executeForm(*form6);
 	}

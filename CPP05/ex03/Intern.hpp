@@ -21,7 +21,6 @@ class Intern
 	public:
 		Intern();
 		Intern(const Intern &copy);
-
 		~Intern();
 
 		Intern &operator=(const Intern &copy);
