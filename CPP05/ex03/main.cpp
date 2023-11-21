@@ -163,7 +163,7 @@ int main()
 	AForm *form4 = intern.makeForm("presidential pardon", "Form4");
 	AForm *form5 = intern.makeForm("robotomy request", "Form5");
 	AForm *form6 = intern.makeForm("shrubbery creation", "Form6");
-	AForm *form7 = nullptr;
+	AForm *form7;
 	cout << endl;
 	try{
 		form7 = intern.makeForm("Bad form", "Form7");
@@ -225,10 +225,6 @@ int main()
 	delete form4;
 	delete form5;
 	delete form6;
-	delete form7;
-
-	cout << endl;
-	cout << endl;
 
 	return (0);
 }
