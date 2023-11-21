@@ -1,5 +1,6 @@
 
-#pragma once
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
 #include <string>
 #include <iostream>
@@ -34,3 +35,5 @@ class RobotomyRequestForm: public AForm
 };
 
 std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm *a);
+
+#endif

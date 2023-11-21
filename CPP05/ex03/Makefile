@@ -1,5 +1,5 @@
 
-NAME = Bureaucrat
+NAME = BUREAUCRAT
 
 SRCS =	main.cpp					\
 		Bureaucrat.cpp				\
@@ -28,15 +28,19 @@ $(OBJS_DIR)%.o:%.cpp
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "${GREEN}BUREAUCRAT COMPILED${NC}"
+	@echo "${GREEN}$(NAME) COMPILED${NC}"
+
+run: re
+	@echo "${GREEN}$(NAME) RUN${NC}"
+	@./$(NAME)
 
 clean:
 	@rm -rf $(OBJS_DIR)
-	@echo "${RED}BUREAUCRAT OBJECTS DELETED${NC}"
+	@echo "${RED}$(NAME) OBJECTS DELETED${NC}"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "${RED}BUREAUCRAT DELETED${NC}"
+	@echo "${RED}$(NAME) DELETED${NC}"
 
 bonus: re
 

@@ -1,4 +1,7 @@
 
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
+
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -32,3 +35,5 @@ class ShrubberyCreationForm: public AForm
 };
 
 std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm *a);
+
+#endif

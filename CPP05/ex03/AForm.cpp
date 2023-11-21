@@ -13,7 +13,7 @@ AForm::AForm(const string name, unsigned int grade, unsigned int execGrade) : _n
 		throw AForm::GradeTooLowException();
 }
 
-AForm::AForm(const AForm &copy) : _name(copy._name), _grade(copy._grade), _execGrade(copy._execGrade), _signed(copy._signed) {
+AForm::AForm(const AForm &copy) : _name(copy._name), _grade(copy._grade), _execGrade(copy._execGrade), _signed(false) {
 	cout << "AForm copy constructor called" << endl;
 	*this = copy;
 }
@@ -24,9 +24,9 @@ AForm::~AForm() {
 
 AForm &AForm::operator=(const AForm &copy) {
 	cout << "AForm assignation operator called" << endl;
-	if (this != &copy)
+	if (this == &copy)
 	{
-		_signed = copy._signed;
+		return (*this);
 	}
 	return (*this);
 }

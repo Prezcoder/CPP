@@ -30,18 +30,18 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	{
 		std::ofstream file;
 		file.open((_target + "_shrubbery").c_str());
-		file << "      /\\      " << std::endl;
-		file << "     /\\*\\     " << std::endl;
-		file << "    /\\O\\*\\    " << std::endl;
-		file << "   /*/\\/\\/\\   " << std::endl;
-		file << "  /\\O\\/\\*\\/\\  " << std::endl;
-		file << " /\\*\\/\\*\\/\\/\\ " << std::endl;
-		file << "/\\O\\/\\/*/\\/O/\\" << std::endl;
-		file << "      ||      " << std::endl;
-		file << "      ||      " << std::endl;
-		file << "      ||      " << std::endl;
-		file << std::endl;
-
+		file << "       *      " << endl;
+		file << "      / \\      " << endl;
+		file << "     /\\ *\\     " << endl;
+		file << "    /\\O \\*\\    " << endl;
+		file << "   /*/\\/ \\/\\   " << endl;
+		file << "  /\\O\\/ \\*\\/\\  " << endl;
+		file << " /\\*\\/ \\*\\/\\/\\ " << endl;
+		file << "/\\O\\/ \\/*/\\/O/\\" << endl;
+		file << "      | |      " << endl;
+		file << "      | |      " << endl;
+		file << "      | |      " << endl;
+		file << endl;
 		file.close();
 	}
 }
@@ -52,6 +52,7 @@ std::string ShrubberyCreationForm::getTarget(void) const {
 
 std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm *a) {
 	o << "ShrubberyCreationForm name: " << a->getName() << endl;
+	o << "ShrubberyCreationForm target: " << a->getTarget() << endl;
 	o << "ShrubberyCreationForm grade required to sign: " << a->getGrade() << endl;
 	o << "ShrubberyCreationForm grade required to execute: " << a->getExecGrade() << endl;
 	o << "ShrubberyCreationForm signed: " << a->getSigned() << endl;

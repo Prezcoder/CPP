@@ -29,7 +29,9 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 	else
 	{
 		cout << "* drilling noises *" << endl;
-		if (rand() % 2)
+		std::srand(std::time(NULL));
+		int	rndNbr = std::rand();
+		if (rndNbr % 2 == 0)
 			cout << _target << " has been robotomized!" << endl;
 		else
 			cout << _target << " robotomization failed..." << endl;
@@ -42,6 +44,7 @@ std::string RobotomyRequestForm::getTarget(void) const {
 
 std::ostream &operator<<(std::ostream &o, RobotomyRequestForm *a) {
 	o << "RobotomyRequestForm name: " << a->getName() << endl;
+	o << "RobotomyRequestForm target: " << a->getTarget() << endl;
 	o << "RobotomyRequestForm grade required to sign: " << a->getGrade() << endl;
 	o << "RobotomyRequestForm grade required to execute: " << a->getExecGrade() << endl;
 	o << "RobotomyRequestForm signed: " << a->getSigned() << endl;

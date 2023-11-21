@@ -1,5 +1,6 @@
 
-#pragma once
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include <string>
 #include <iostream>
@@ -32,3 +33,5 @@ class PresidentialPardonForm: public AForm
 };
 
 std::ostream	&operator<<(std::ostream &o, PresidentialPardonForm *a);
+
+#endif

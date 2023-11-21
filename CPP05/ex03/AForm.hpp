@@ -15,6 +15,8 @@ class Bureaucrat;
 class AForm
 {
 	public:
+		AForm(const AForm &copy);
+		AForm(const string name, unsigned int grade, unsigned int execGrade);
 		virtual ~AForm();
 
 		void beSigned(const Bureaucrat &b);
@@ -45,15 +47,13 @@ class AForm
 				virtual const char *what() const throw();
 		};
 
-	protected:
+	private:
 		const string _name;
 		const int _grade;
 		const int _execGrade;
 		bool _signed;
 
 		AForm();
-		AForm(const AForm &copy);
-		AForm(const string name, unsigned int grade, unsigned int execGrade);
 };
 
 std::ostream &operator<<(std::ostream &out, const AForm &f);

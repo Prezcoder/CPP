@@ -1,4 +1,7 @@
 
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
+
 #include <string>
 #include <iostream>
 #include "Bureaucrat.hpp"
@@ -30,3 +33,5 @@ class PresidentialPardonForm: public AForm
 };
 
 std::ostream	&operator<<(std::ostream &o, PresidentialPardonForm *a);
+
+#endif
