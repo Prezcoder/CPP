@@ -1,5 +1,6 @@
 
-#pragma once
+#ifndef INTERN_HPP
+#define INTERN_HPP
 
 #include <string>
 #include <iostream>
@@ -8,6 +9,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
+using std::exception;
 using std::string;
 using std::cout;
 using std::endl;
@@ -25,4 +27,8 @@ class Intern
 		Intern &operator=(const Intern &copy);
 
 		AForm *makeForm(const string form, const string target);
+
+		exception NoFormFoundException() const;
 };
+
+#endif

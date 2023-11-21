@@ -6,6 +6,7 @@
 #include<iostream>
 #include"AForm.hpp"
 
+using std::exception;
 using std::string;
 using std::cout;
 using std::endl;
@@ -30,17 +31,8 @@ class Bureaucrat
 
 		Bureaucrat &operator=(const Bureaucrat &copy);
 
-		class GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
-
-		class GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
+		exception GradeTooHighException() const;
+		exception GradeTooLowException() const;
 
 	private:
 		const string _name;

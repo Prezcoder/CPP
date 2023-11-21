@@ -3,6 +3,8 @@
 #define BUREAUCRAT_HPP
 
 #include<iostream>
+
+using std::exception;
 using std::string;
 using std::cout;
 using std::endl;

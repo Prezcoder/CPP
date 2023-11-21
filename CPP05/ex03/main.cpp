@@ -163,6 +163,13 @@ int main()
 	AForm *form4 = intern.makeForm("presidential pardon", "Form4");
 	AForm *form5 = intern.makeForm("robotomy request", "Form5");
 	AForm *form6 = intern.makeForm("shrubbery creation", "Form6");
+	AForm *form7;
+	try{
+		form7 = intern.makeForm("Bad form", "Form7");
+	}
+	catch (std::exception &e){
+		cout << e.what() << endl;
+	}
 	cout << *form4 << endl;
 	cout << *form5 << endl;
 	cout << *form6 << endl;
@@ -211,6 +218,7 @@ int main()
 	delete form4;
 	delete form5;
 	delete form6;
+	delete form7;
 
 	cout << endl;
 	cout << endl;

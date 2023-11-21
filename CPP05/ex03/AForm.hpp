@@ -3,10 +3,11 @@
 #define AFORM_HPP
 
 #include <string>
-#include<iostream>
-#include"Bureaucrat.hpp"
+#include <iostream>
+#include "Bureaucrat.hpp"
 
 using std::string;
+using std::exception;
 using std::cout;
 using std::endl;
 
@@ -29,23 +30,9 @@ class AForm
 
 		AForm &operator=(const AForm &copy);
 
-		class GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
-
-		class GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
-
-		class NotSignedException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
+		exception GradeTooHighException() const;
+		exception GradeTooLowException() const;
+		exception NotSignedException() const;
 
 	private:
 		const string _name;

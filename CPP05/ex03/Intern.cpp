@@ -34,6 +34,9 @@ AForm *Intern::makeForm(string name, string target) {
 			return (forms[i]);
 		}
 	}
-	cout << "Intern could not create " << name << endl;
-	return (NULL);
+	throw NoFormFoundException();
+}
+
+exception Intern::NoFormFoundException() const {
+	throw std::invalid_argument("No form found");
 }
