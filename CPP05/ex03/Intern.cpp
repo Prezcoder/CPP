@@ -23,18 +23,15 @@ Intern &Intern::operator=(const Intern &copy) {
 	return (*this);
 }
 
-static AForm *makePresident(const std::string target)
-{
+static AForm *makePresident(const std::string target) {
 	return (new PresidentialPardonForm(target));
 }
 
-static AForm *makeRobot(const std::string target)
-{
+static AForm *makeRobot(const std::string target) {
 	return (new RobotomyRequestForm(target));
 }
 
-static AForm *makeShrubbery(const std::string target)
-{
+static AForm *makeShrubbery(const std::string target) {
 	return (new ShrubberyCreationForm(target));
 }
 
