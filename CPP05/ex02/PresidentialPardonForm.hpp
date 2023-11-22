@@ -32,6 +32,4 @@ class PresidentialPardonForm: public AForm
 		string getTarget(void)const;
 };
 
-std::ostream	&operator<<(std::ostream &o, PresidentialPardonForm *a);
-
 #endif

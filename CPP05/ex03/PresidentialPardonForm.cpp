@@ -33,12 +33,3 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 string PresidentialPardonForm::getTarget(void) const {
 	return (_target);
 }
-
-std::ostream &operator<<(std::ostream &o, PresidentialPardonForm *a) {
-	o << "PresidentialPardonForm name: " << a->getName() << endl;
-	o << "PresidentialPardonForm target: " << a->getTarget() << endl;
-	o << "PresidentialPardonForm grade required to sign: " << a->getGrade() << endl;
-	o << "PresidentialPardonForm grade required to execute: " << a->getExecGrade() << endl;
-	o << "PresidentialPardonForm signed: " << a->getSigned() << endl;
-	return (o);
-}

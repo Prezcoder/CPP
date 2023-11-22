@@ -49,12 +49,3 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 string ShrubberyCreationForm::getTarget(void) const {
 	return (_target);
 }
-
-std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm *a) {
-	o << "ShrubberyCreationForm name: " << a->getName() << endl;
-	o << "ShrubberyCreationForm target: " << a->getTarget() << endl;
-	o << "ShrubberyCreationForm grade required to sign: " << a->getGrade() << endl;
-	o << "ShrubberyCreationForm grade required to execute: " << a->getExecGrade() << endl;
-	o << "ShrubberyCreationForm signed: " << a->getSigned() << endl;
-	return (o);
-}

@@ -41,12 +41,3 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 std::string RobotomyRequestForm::getTarget(void) const {
 	return (_target);
 }
-
-std::ostream &operator<<(std::ostream &o, RobotomyRequestForm *a) {
-	o << "RobotomyRequestForm name: " << a->getName() << endl;
-	o << "RobotomyRequestForm target: " << a->getTarget() << endl;
-	o << "RobotomyRequestForm grade required to sign: " << a->getGrade() << endl;
-	o << "RobotomyRequestForm grade required to execute: " << a->getExecGrade() << endl;
-	o << "RobotomyRequestForm signed: " << a->getSigned() << endl;
-	return (o);
-}
