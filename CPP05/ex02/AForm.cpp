@@ -5,7 +5,7 @@ AForm::AForm() : _name("default"), _grade(150), _execGrade(150), _signed(false) 
 	cout << "AForm default constructor called" << endl;
 }
 
-AForm::AForm(const string name, unsigned int grade, unsigned int execGrade) : _name(name), _grade(grade),  _execGrade(execGrade), _signed(false) {
+AForm::AForm(const string name, unsigned int grade, unsigned int execGrade) : _name(name), _grade(grade), _execGrade(execGrade), _signed(false) {
 	cout << "AForm constructor called" << endl;
 	if (grade < 1 || execGrade < 1)
 		throw AForm::GradeTooHighException();

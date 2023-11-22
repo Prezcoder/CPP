@@ -19,11 +19,12 @@ class Form
 		Form(const Form &copy);
 		~Form();
 
-		Form(const string name, unsigned int grade);
+		Form(const string name, unsigned int grade, unsigned int execGrade);
 		void beSigned(const Bureaucrat &b);
 
 		const string getName() const;
 		int getGrade() const;
+		int getExecGrade() const;
 		bool getSigned() const;
 
 		Form &operator=(const Form &copy);
@@ -34,6 +35,7 @@ class Form
 		private:
 			const string _name;
 			const int _grade;
+			const int _execGrade;
 			bool _signed;
 };
 

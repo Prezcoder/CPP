@@ -61,7 +61,7 @@ int main()
 	cout << Arthur << endl;
 	cout << Jeannine << endl;
 	printTitle("Test 3: Init Form");
-	Form form("form", 42);
+	Form form("form", 42, 42);
 	cout << form << endl;
 	printTitle("Test 4: Try to sign Form");
 	try{
@@ -84,7 +84,7 @@ int main()
 	}
 	cout << form << endl;
 	printTitle("Test 5: Try to sign Form");
-	Form form2("form2", 1);
+	Form form2("form2", 1, 42);
 	cout << form2 << endl;
 	try{
 		Leon.signForm(form2);
