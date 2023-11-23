@@ -21,6 +21,7 @@ class RobotomyRequestForm: public AForm
 	private:
 		const string _target;
 		RobotomyRequestForm(void);
+		
 	public:
 		RobotomyRequestForm(string target);
 		RobotomyRequestForm(RobotomyRequestForm &copy);

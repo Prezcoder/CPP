@@ -15,6 +15,10 @@ class AForm;
 
 class Bureaucrat
 {
+	private:
+		const string _name;
+		int _grade;
+
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat &copy);
@@ -33,10 +37,6 @@ class Bureaucrat
 
 		exception GradeTooHighException() const;
 		exception GradeTooLowException() const;
-
-	private:
-		const string _name;
-		int _grade;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);

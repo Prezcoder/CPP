@@ -21,6 +21,7 @@ class ShrubberyCreationForm: public AForm
 	private:
 		const string _target;
 		ShrubberyCreationForm(void);
+		
 	public:
 		ShrubberyCreationForm(string target);
 		ShrubberyCreationForm(ShrubberyCreationForm &copy);

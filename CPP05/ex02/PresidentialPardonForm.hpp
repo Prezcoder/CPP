@@ -20,6 +20,7 @@ class PresidentialPardonForm: public AForm
 	private:
 		const string _target;
 		PresidentialPardonForm(void);
+		
 	public:
 		PresidentialPardonForm(string target);
 		PresidentialPardonForm(PresidentialPardonForm &copy);

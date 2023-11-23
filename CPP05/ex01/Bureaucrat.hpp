@@ -14,29 +14,27 @@ class Form;
 
 class Bureaucrat
 {
-public:
-	Bureaucrat();
-	Bureaucrat(const Bureaucrat &copy);
-	~Bureaucrat();
+	private:
+		const string _name;
+		int _grade;
 
-	Bureaucrat(const string name, unsigned int grade);
+	public:
+		Bureaucrat();
+		Bureaucrat(const Bureaucrat &copy);
+		~Bureaucrat();
 
-	void incrementGrade();
-	void decrementGrade();
-	const string getName() const;
-	int getGrade() const;
-	void signForm(Form &f) const;
+		Bureaucrat(const string name, unsigned int grade);
 
-	Bureaucrat &operator=(const Bureaucrat &copy);
+		void incrementGrade();
+		void decrementGrade();
+		const string getName() const;
+		int getGrade() const;
+		void signForm(Form &f) const;
 
-	exception GradeTooHighException() const;
-	exception GradeTooLowException() const;
+		Bureaucrat &operator=(const Bureaucrat &copy);
 
-private:
-	const string _name;
-	int _grade;
-
-
+		exception GradeTooHighException() const;
+		exception GradeTooLowException() const;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);

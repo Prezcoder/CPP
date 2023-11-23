@@ -59,10 +59,10 @@ Bureaucrat::~Bureaucrat() {
 	cout << "Bureaucrat destructor called" << endl;
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Grade too high");
+exception Bureaucrat::GradeTooHighException() const {
+	throw std::invalid_argument("Grade too high");
 }
 
-const char *Bureaucrat::GradeTooHighException::what(void) const throw() {
-	return ("Grade too high");
+exception Bureaucrat::GradeTooLowException() const {
+	throw std::invalid_argument("Grade too low");
 }

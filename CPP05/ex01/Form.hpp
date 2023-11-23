@@ -14,6 +14,12 @@ class Bureaucrat;
 
 class Form
 {
+	private:
+		const string _name;
+		const int _grade;
+		const int _execGrade;
+		bool _signed;
+		
 	public:
 		Form();
 		Form(const Form &copy);
@@ -32,11 +38,6 @@ class Form
 		exception GradeTooHighException() const;
 		exception GradeTooLowException() const;
 
-		private:
-			const string _name;
-			const int _grade;
-			const int _execGrade;
-			bool _signed;
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &f);

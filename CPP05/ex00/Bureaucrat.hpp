@@ -11,6 +11,10 @@ using std::endl;
 
 class Bureaucrat
 {
+	private:
+		const string _name;
+		int _grade;
+
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat &copy);
@@ -25,21 +29,8 @@ class Bureaucrat
 
 		Bureaucrat &operator=(const Bureaucrat &copy);
 
-		class GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
-
-		class GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
-
-	private:
-		const string _name;
-		int _grade;
+		exception GradeTooHighException() const;
+		exception GradeTooLowException() const;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);
