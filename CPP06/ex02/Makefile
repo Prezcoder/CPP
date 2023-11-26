@@ -1,8 +1,7 @@
 
-NAME = CONVERTER
+NAME = TYPE
 
 SRCS =	main.cpp					\
-		Converter.cpp				\
 
 OBJS_DIR = ./obj/
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)%.o)
