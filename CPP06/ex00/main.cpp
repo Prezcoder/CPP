@@ -12,8 +12,8 @@ bool isSingleCharacter(const std::string& arg) {
 bool isValidInteger(const string& arg) {
 	try {
 		size_t pos;
-		int value = std::stoi(arg, &pos);
-		return (pos == arg.length()) && (value <= std::numeric_limits<int>::max()) && (value >= std::numeric_limits<int>::min());
+		std::stoi(arg, &pos);
+		return (pos == arg.length());
 	} catch (const std::exception&) {
 		return false;
 	}
@@ -21,17 +21,7 @@ bool isValidInteger(const string& arg) {
 
 bool isValidDouble(const std::string& arg) {
 	try {
-		size_t pos;
-		double value = std::stod(arg, &pos);
-		if (pos != arg.length()) {
-			return false;
-		}
-		if (arg.find_first_not_of("0123456789.+-") != std::string::npos) {
-			return false;
-		}
-		if (value > std::numeric_limits<double>::max() || value < std::numeric_limits<double>::lowest()) {
-			return false;
-		}
+		std::stod(arg);
 		return true;
 	} catch (const std::exception&) {
 		return false;
@@ -40,24 +30,7 @@ bool isValidDouble(const std::string& arg) {
 
 bool isValidFloat(const std::string& arg) {
 	try {
-		size_t pos;
-		float value = std::stof(arg, &pos);
-		if (pos != arg.length()) {
-			if (arg[pos] == 'f') {
-				++pos;
-				while (pos < arg.length() && std::isdigit(arg[pos])) {
-					++pos;
-				}
-			} else {
-				return false;
-			}
-		}
-		if (arg.find_first_not_of("0123456789f.+-") != string::npos) {
-			return false;
-		}
-		if (value > std::numeric_limits<float>::max() || value < std::numeric_limits<float>::lowest()) {
-			return false;
-		}
+		std::stof(arg);
 		return true;
 	} catch (const std::exception&) {
 		return false;
@@ -67,9 +40,6 @@ bool isValidFloat(const std::string& arg) {
 int getType(const string& arg) {
 	if (arg == "nan" || arg == "nanf" || arg == "-inf" || arg == "-inff" || arg == "+inf" || arg == "+inff") {
 		return SPECIAL;
-	}
-	if (arg.empty()) {
-		return INVALID;
 	}
 	if (isSingleCharacter(arg)) {
 		return CHAR;
@@ -91,17 +61,17 @@ bool checkString(const string& arg) {
 		return true;
 	size_t fIndex = arg.find('f');
 
-	if (fIndex != std::string::npos) {
+	if (fIndex != string::npos) {
 		if (fIndex != arg.length() - 1) {
-			std::cerr << "Problem: takes only one 'f' and it should be at the end of the string" << std::endl;
+			cerr << "Problem: takes only one 'f' and it should be at the end of the string" << endl;
 			return false;
 		}
 	}
 	size_t dotIndex = arg.find('.');
-	if (dotIndex != std::string::npos) {
+	if (dotIndex != string::npos) {
 		size_t nextDotIndex = arg.find('.', dotIndex + 1);
-		if (nextDotIndex != std::string::npos) {
-			std::cerr << "Problem: More than one '.' in the string" << std::endl;
+		if (nextDotIndex != string::npos) {
+			cerr << "Problem: More than one '.' in the string" << endl;
 			return false;
 		}
 	}
