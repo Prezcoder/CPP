@@ -1,11 +1,9 @@
-#include <iostream>
-#include <string>
-#include <stdexcept>
+
 #include "Converter.hpp"
 
 enum ConversionType { INVALID = -1, CHAR = 0, INT = 1, DOUBLE = 2, FLOAT = 3, SPECIAL = 4 };
 
-bool isSingleCharacter(const std::string& arg) {
+bool isSingleCharacter(const string& arg) {
 	return arg.length() == 1 && !std::isdigit(arg[0]);
 }
 
@@ -19,7 +17,7 @@ bool isValidInteger(const string& arg) {
 	}
 }
 
-bool isValidDouble(const std::string& arg) {
+bool isValidDouble(const string& arg) {
 	try {
 		std::stod(arg);
 		return true;
@@ -28,7 +26,7 @@ bool isValidDouble(const std::string& arg) {
 	}
 }
 
-bool isValidFloat(const std::string& arg) {
+bool isValidFloat(const string& arg) {
 	try {
 		std::stof(arg);
 		return true;
@@ -37,8 +35,18 @@ bool isValidFloat(const std::string& arg) {
 	}
 }
 
+bool isSpecialValue(const string& arg) {
+	const string specialValues[] = {"nan", "nanf", "-inf", "-inff", "+inf", "+inff"};
+	for (int i = 0; i < 6; i++)
+	{
+		if (arg == specialValues[i])
+			return true;
+	}
+	return false;
+}
+
 int getType(const string& arg) {
-	if (arg == "nan" || arg == "nanf" || arg == "-inf" || arg == "-inff" || arg == "+inf" || arg == "+inff") {
+	if (isSpecialValue(arg)) {
 		return SPECIAL;
 	}
 	if (isSingleCharacter(arg)) {
@@ -57,10 +65,9 @@ int getType(const string& arg) {
 }
 
 bool checkString(const string& arg) {
-	if (arg == "nan" || arg == "nanf" || arg == "-inf" || arg == "-inff" || arg == "+inf" || arg == "+inff")
+	if (isSpecialValue(arg))
 		return true;
 	size_t fIndex = arg.find('f');
-
 	if (fIndex != string::npos) {
 		if (fIndex != arg.length() - 1) {
 			cerr << "Problem: takes only one 'f' and it should be at the end of the string" << endl;
@@ -78,17 +85,9 @@ bool checkString(const string& arg) {
 	return true;
 }
 
-int main(int argc, char** argv) {
-	if (argc != 2) {
-		cerr << "Error: Wrong number of arguments" << endl;
-		return 1;
-	}
-
-	string input = argv[1];
-	if (!checkString(input))
-		return 1;
-
+void convertValue(const string& input) {
 	Converter argConverter(input);
+
 	switch (getType(input)) {
 		case CHAR:
 			argConverter.toChar();
@@ -108,5 +107,19 @@ int main(int argc, char** argv) {
 		default:
 			argConverter.printError();
 	}
+}
+
+int main(int argc, char** argv) {
+	if (argc != 2) {
+		cerr << "Error: Wrong number of arguments" << endl;
+		return 1;
+	}
+
+	string input = argv[1];
+	if (!checkString(input))
+		return 1;
+
+	convertValue(input);
+	
 	return 0;
 }

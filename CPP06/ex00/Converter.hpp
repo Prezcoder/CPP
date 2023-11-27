@@ -6,6 +6,7 @@
 #include<string>
 #include<iomanip>
 #include<cstring>
+#include<stdexcept>
 
 using std::string;
 using std::cout;
