@@ -60,22 +60,22 @@ void identify(Base& p)
 int main()
 {
 	srand(time(NULL));
-	Base*   a = generate();
-	Base*   b = generate();
-	Base*   c = generate();
-	Base*   d = generate();
+	Base*	a = generate();
+	Base*	b = generate();
+	Base*	c = generate();
+	Base*	d = generate();
 
-	std::cout << "a* = "; identify( a );
-	std::cout << "a& = "; identify( *a ); std::cout << std::endl;
+	cout << "a* = "; identify(a);
+	cout << "a& = "; identify(*a); cout << endl;
 
-	std::cout << "b* = "; identify( b );
-	std::cout << "b& = "; identify( *b ); std::cout << std::endl;
+	cout << "b* = "; identify(b);
+	cout << "b& = "; identify(*b); cout << endl;
 
-	std::cout << "c* = "; identify( c );
-	std::cout << "c& = "; identify( *c ); std::cout << std::endl;
+	cout << "c* = "; identify(c);
+	cout << "c& = "; identify(*c); cout << endl;
 
-	std::cout << "d* = "; identify( d );
-	std::cout << "d& = "; identify( *d ); std::cout << std::endl;
+	cout << "d* = "; identify(d);
+	cout << "d& = "; identify(*d); cout << endl;
 
 	delete a;
 	delete b;

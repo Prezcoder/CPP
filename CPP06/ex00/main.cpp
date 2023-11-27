@@ -5,44 +5,56 @@
 
 enum ConversionType { INVALID = -1, CHAR = 0, INT = 1, DOUBLE = 2, FLOAT = 3, SPECIAL = 4 };
 
-int getType(const string& arg) {
-	if (arg == "nan" || arg == "nanf" || arg == "-inf" || arg == "-inff" || arg == "+inf" || arg == "+inff")
-		return SPECIAL;
-	try {
-		if (arg.length() > 11 || arg.empty())
-			throw std::invalid_argument("not a valid number");
-	} catch (const std::invalid_argument&) {
-		return INVALID;
-	} 
-	if (arg.length() == 1 && arg.find_first_of("0123456789") == string::npos)
-		return CHAR;
+bool isValidInteger(const string& arg) {
 	try {
 		size_t pos;
 		int value = std::stoi(arg, &pos);
-		if (pos != arg.length()) {
-			throw std::invalid_argument("not a valid integer");
-		}
-		if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min()) {
-			throw std::out_of_range("integer out of range");
-		}
-		return INT;
-	} catch (std::exception) {
-		try {
-			std::stod(arg);
-			if (arg.find_first_not_of("0123456789.+-") != string::npos || arg.length() > 11)
-				throw std::invalid_argument("not a valid double");
-			return DOUBLE;
-		} catch (const std::invalid_argument&) {
-			try {
-				std::stof(arg);
-				if (arg.find_first_not_of("0123456789f.+-") != string::npos || arg.length() > 11)
-					throw std::invalid_argument("not a valid float");
-				return FLOAT;
-			} catch (const std::invalid_argument&) {
-				return INVALID;
-			}
-		}
+		return (pos == arg.length()) && (value <= std::numeric_limits<int>::max()) && (value >= std::numeric_limits<int>::min());
+	} catch (const std::exception&) {
+		return false;
 	}
+}
+
+bool isValidDouble(const string& arg) {
+	try {
+		size_t pos;
+		std::stod(arg, &pos);
+		return (pos == arg.length()) && (arg.find_first_not_of("0123456789.+-") == string::npos) && (arg.length() <= 11);
+	} catch (const std::exception&) {
+		return false;
+	}
+}
+
+bool isValidFloat(const string& arg) {
+	try {
+		size_t pos;
+		std::stof(arg, &pos);
+		return (pos == arg.length()) && (arg.find_first_not_of("0123456789f.+-") == string::npos) && (arg.length() <= 11);
+	} catch (const std::exception&) {
+		return false;
+	}
+}
+
+int getType(const string& arg) {
+	if (arg == "nan" || arg == "nanf" || arg == "-inf" || arg == "-inff" || arg == "+inf" || arg == "+inff") {
+		return SPECIAL;
+	}
+	if (arg.length() > 11 || arg.empty()) {
+		return INVALID;
+	}
+	if (arg.length() == 1 && arg.find_first_of("0123456789") == string::npos) {
+		return CHAR;
+	}
+	if (isValidInteger(arg)) {
+		return INT;
+	}
+	if (isValidDouble(arg)) {
+		return DOUBLE;
+	}
+	if (isValidFloat(arg)) {
+		return FLOAT;
+	}
+	return INVALID;
 }
 
 bool checkString(const string& arg) {
@@ -69,12 +81,10 @@ int main(int argc, char** argv) {
 	}
 
 	string input = argv[1];
-
 	if (!checkString(input))
 		return 1;
 
 	Converter argConverter(input);
-
 	switch (getType(input)) {
 		case CHAR:
 			argConverter.toChar();
@@ -94,6 +104,5 @@ int main(int argc, char** argv) {
 		default:
 			argConverter.printError();
 	}
-
 	return 0;
 }
