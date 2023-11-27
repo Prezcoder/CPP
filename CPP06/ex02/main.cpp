@@ -28,8 +28,6 @@ void identify(Base* p)
 		cout << "B" << endl;
 	else if (dynamic_cast<C*>(p))
 		cout << "C" << endl;
-	else
-		cout << "Unknown" << endl;
 }
 
 void identify(Base& p)
