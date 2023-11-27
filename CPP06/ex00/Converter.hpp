@@ -16,21 +16,21 @@ using std::cerr;
 
 class Converter
 {
-private:
-	string _str;
-public:
-	Converter();
-	Converter(string str);
-	Converter(const Converter &copy);
-	~Converter();
-	Converter &operator=(const Converter &copy);
+	private:
+		string _str;
+		Converter();
+	public:
+		Converter(string str);
+		Converter(const Converter &copy);
+		~Converter();
+		Converter &operator=(const Converter &copy);
 
-	void toChar();
-	void toInt();
-	void toFloat();
-	void toDouble();
-	void toSpecial();
-	void printError();
+		void toChar();
+		void toInt();
+		void toFloat();
+		void toDouble();
+		void toSpecial();
+		void printError();
 };
 
 #endif
