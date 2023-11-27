@@ -43,9 +43,16 @@ bool isValidFloat(const std::string& arg) {
 		size_t pos;
 		float value = std::stof(arg, &pos);
 		if (pos != arg.length()) {
-			return false;
+			if (arg[pos] == 'f') {
+				++pos;
+				while (pos < arg.length() && std::isdigit(arg[pos])) {
+					++pos;
+				}
+			} else {
+				return false;
+			}
 		}
-		if (arg.find_first_not_of("0123456789f.+-") != std::string::npos) {
+		if (arg.find_first_not_of("0123456789f.+-") != string::npos) {
 			return false;
 		}
 		if (value > std::numeric_limits<float>::max() || value < std::numeric_limits<float>::lowest()) {
@@ -61,7 +68,7 @@ int getType(const string& arg) {
 	if (arg == "nan" || arg == "nanf" || arg == "-inf" || arg == "-inff" || arg == "+inf" || arg == "+inff") {
 		return SPECIAL;
 	}
-	if (arg.length() > 11 || arg.empty()) {
+	if (arg.empty()) {
 		return INVALID;
 	}
 	if (isSingleCharacter(arg)) {
@@ -86,11 +93,7 @@ bool checkString(const string& arg) {
 
 	if (fIndex != std::string::npos) {
 		if (fIndex != arg.length() - 1) {
-			std::cerr << "Problem: 'f' should be at the end of the string" << std::endl;
-			return false;
-		}
-		if (arg.find('f', fIndex + 1) != std::string::npos) {
-			std::cerr << "Problem: More than one 'f' in the string" << std::endl;
+			std::cerr << "Problem: takes only one 'f' and it should be at the end of the string" << std::endl;
 			return false;
 		}
 	}

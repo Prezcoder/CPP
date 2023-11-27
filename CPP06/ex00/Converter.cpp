@@ -28,8 +28,8 @@ void Converter::toChar() {
 	else
 		cout << "char: '" << c << "'" << endl;
 	cout << "int: " << static_cast<int>(c) << endl;
-	cout << "float: " << fixed << setprecision(2) << static_cast<float>(c) << "f" << endl;
-	cout << "double: " << fixed << setprecision(2) << static_cast<double>(c) << endl;
+	cout << "float: " << fixed << setprecision(1) << static_cast<float>(c) << "f" << endl;
+	cout << "double: " << fixed << setprecision(1) << static_cast<double>(c) << endl;
 }
 
 void Converter::toInt() {
@@ -47,8 +47,8 @@ void Converter::toInt() {
 		cout << "char: impossible" << endl;
 	}
 	cout << "int: " << i << endl;
-	cout << "float: " << fixed << setprecision(2) << static_cast<float>(i) << "f" << endl;
-	cout << "double: " << fixed << setprecision(2) << static_cast<double>(i) << endl;
+	cout << "float: " << fixed << setprecision(1) << static_cast<float>(i) << "f" << endl;
+	cout << "double: " << fixed << setprecision(1) << static_cast<double>(i) << endl;
 }
 
 void Converter::toFloat() {
@@ -71,8 +71,8 @@ void Converter::toFloat() {
 	else
 		cout << "int: " << static_cast<int>(f) << endl;
 
-	cout << "float: " << fixed << setprecision(2) << f << "f" << endl;
-	cout << "double: " << fixed << setprecision(2) << static_cast<double>(f) << endl;
+	cout << "float: " << fixed << setprecision(1) << f << "f" << endl;
+	cout << "double: " << fixed << setprecision(1) << static_cast<double>(f) << endl;
 }
 
 void Converter::toDouble() {
@@ -93,9 +93,8 @@ void Converter::toDouble() {
 		cout << "int: impossible" << endl;
 	else
 		cout << "int: " << static_cast<int>(d) << endl;
-	cout << "float: " << fixed << setprecision(2) << static_cast<float>(d) << "f" << endl;
-	cout << "double: " << fixed << setprecision(2) << d << endl;
-
+	cout << "float: " << fixed << setprecision(1) << static_cast<float>(d) << "f" << endl;
+	cout << "double: " << fixed << setprecision(1) << d << endl;
 }
 
 void Converter::toSpecial() {
