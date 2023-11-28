@@ -3,8 +3,8 @@
 #define BUREAUCRAT_HPP
 
 #include <string>
-#include<iostream>
-#include"AForm.hpp"
+#include <iostream>
+#include "AForm.hpp"
 
 using std::exception;
 using std::string;

@@ -2,11 +2,11 @@
 #ifndef CONVERTER_HPP
 # define CONVERTER_HPP
 
-#include<iostream>
-#include<string>
-#include<iomanip>
-#include<cstring>
-#include<stdexcept>
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <cstring>
+#include <stdexcept>
 
 using std::string;
 using std::cout;

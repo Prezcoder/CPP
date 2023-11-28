@@ -2,7 +2,7 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include<iostream>
+#include <iostream>
 
 using std::exception;
 using std::string;

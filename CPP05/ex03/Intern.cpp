@@ -1,5 +1,5 @@
 
-#include"Intern.hpp"
+#include "Intern.hpp"
 
 Intern::Intern() {
 	cout << "Intern default constructor called" << endl;

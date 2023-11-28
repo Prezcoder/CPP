@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "Iter.hpp"
+#include "iter.hpp"
 
 int main( void ) {
 	int intArray[] = { 1, 2, 3, 4, 5 };
@@ -17,8 +17,7 @@ int main( void ) {
 
 	cout << "stringArray: " << endl;
 	iter(stringArray, 5, print);
-	cout << std::endl;
+	cout << endl;
 
 	return 0;
-
 }

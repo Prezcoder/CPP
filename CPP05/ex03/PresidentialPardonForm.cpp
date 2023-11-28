@@ -1,5 +1,5 @@
 
-#include"PresidentialPardonForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {
 	cout << "PresidentialPardonForm constructor called" << endl;

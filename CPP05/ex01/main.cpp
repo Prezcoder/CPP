@@ -1,6 +1,6 @@
 
-#include"Bureaucrat.hpp"
-#include"Form.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
