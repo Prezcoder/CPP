@@ -6,9 +6,12 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <array>
+#include <stdexcept>
 
 using std::cout;
 using std::endl;
+using std::string;
 
 template<typename T>
 typename T::iterator easyfind(T &container, int n)

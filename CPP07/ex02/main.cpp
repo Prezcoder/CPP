@@ -89,5 +89,11 @@ int main()
 	for (unsigned int i = 0; i < c.size(); i++)
 		cout << c[i] << " ";
 	cout << endl;
+	printTitle("Test 5: Copy constructor");
+	Array<string> d(c);
+	cout << "d: ";
+	for (unsigned int i = 0; i < c.size(); i++)
+		cout << c[i] << " ";
+	cout << endl;
 	return 0;
 }

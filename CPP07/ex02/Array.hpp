@@ -14,9 +14,14 @@ class Array
 	public:
 		Array() : _size(0), _array(new T()) {};
 		Array(unsigned int n) : _size(n), _array(new T[n]) {};
-		Array(Array const &copy) : _size(copy._size), _array(new T[copy._size]) {
-			for (unsigned int i = 0; i < _size; i++)
-				_array[i] = copy._array[i];
+		Array(Array const &copy) {
+			if (this != &copy)
+			{
+				_size = copy._size;
+				_array = new T[_size];
+				for (unsigned int i = 0; i < _size; i++)
+					_array[i] = copy._array[i];
+			}
 		}
 		~Array() {delete [] _array;}
 		Array &operator=(Array const &copy) {
@@ -48,6 +53,5 @@ class Array
 		unsigned int _size;
 		T *_array;
 };
-
 
 #endif

@@ -1,5 +1,5 @@
 
-NAME = ARRAY
+NAME = EASYFIND
 
 SRCS =	main.cpp					\
 
