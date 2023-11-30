@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <array>
+#include <deque>
 #include <stdexcept>
 
 using std::cout;
