@@ -10,16 +10,16 @@
 using std::cout;
 using std::endl;
 using std::list;
-using std::exception;
+using std::cerr;
 
 class Span
 {
 	private:
-		unsigned int		_number;
+		unsigned int		_N;
 		list<int>			_list;
 		Span();
 	public:
-		Span(unsigned int number);
+		Span(unsigned int N);
 		Span(const Span &copy);
 		Span &operator=(const Span &copy);
 		~Span();

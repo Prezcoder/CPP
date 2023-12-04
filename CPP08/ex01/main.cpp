@@ -13,12 +13,12 @@ void printTitle(const std::string& title) {
 	std::cout << BLUE << "----------------------------------------" << RESET << std::endl;
 }
 
-int		main(void)
+int	main(void)
 {
 	printTitle("Test 1: Creating a Span");
 	Span span = Span(5);
 	try
-	{
+	{ 
 		span.addNumber(5);
 		span.addNumber(3);
 		span.addNumber(17);
@@ -28,7 +28,7 @@ int		main(void)
 	}
 	catch (std::exception &e)
 	{
-		cout << e.what() << endl;
+		cerr << "Error : " << e.what() << endl;
 	}
 	cout << "List: " << span << endl;
 	printTitle("Test 2: Shortest and longest span");
@@ -39,7 +39,7 @@ int		main(void)
 	}
 	catch (std::exception &e)
 	{
-		cout << e.what() << endl;
+		cerr << "Error : " << e.what() << endl;
 	}
 	printTitle("Test 3: Adding a number to a full list");
 	try
@@ -48,7 +48,7 @@ int		main(void)
 	}
 	catch (std::exception &e)
 	{
-		cout << e.what() << endl;
+		cerr << "Error : " << e.what() << endl;
 	}
 	printTitle("Test 4: Creating a Span with iterators");
 	try 
@@ -63,7 +63,7 @@ int		main(void)
 	}
 	catch ( std::exception& e ) 
 	{
-		cout << e.what() << endl; 
+		cerr << "Error : " << e.what() << endl;
 	}
 	printTitle("Test 5: Copy constructor");
 	Span span3 = Span(span);
@@ -79,17 +79,17 @@ int		main(void)
 	}
 	catch (std::exception &e)
 	{
-		cout << e.what() << endl;
+		cerr << "Error : " << e.what() << endl;
 	}
-	printTitle("Test 8: Creating a Span with size of 0");
+	printTitle("Test 8: Creating a Span with size of 1");
 	try
 	{
-		Span span5 = Span(0);
+		Span span5 = Span(1);
 		cout << "Shortest span: " << span5.shortestSpan() << endl;
 	}
 	catch (std::exception &e)
 	{
-		cout << e.what() << endl;
+		cerr << "Error : " << e.what() << endl;
 	}
 	return (0);
 }
