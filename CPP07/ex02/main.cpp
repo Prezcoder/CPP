@@ -68,7 +68,7 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		cout << e.what() << endl;
+		cerr << e.what() << endl;
 	}
 
 	cout << "a: ";

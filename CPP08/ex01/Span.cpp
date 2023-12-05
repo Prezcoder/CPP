@@ -38,11 +38,11 @@ void	Span::addNumber(list<int>::const_iterator begin, list<int>::const_iterator 
 unsigned int	Span::shortestSpan() const {
 	if (_list.size() < 2)
 		throw std::out_of_range("list is too small");
-	unsigned int  min = Span::longestSpan();
+	unsigned int	min = Span::longestSpan();
 	for (std::list<int>::const_iterator it = _list.begin(); it != _list.end(); ++it) {
 		for (std::list<int>::const_iterator it2 = _list.begin(); it2 != _list.end(); ++it2) {
 			if (it == it2) continue;
-			if (std::abs( *it2 - *it) <  static_cast< int >(min))
+			if (std::abs(*it2 - *it) < static_cast<int>(min))
 				min = std::abs(*it2 - *it);
 		}
 	}

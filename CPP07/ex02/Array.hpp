@@ -7,6 +7,7 @@
 using std::cout;
 using std::endl;
 using std::string;
+using std::cerr;
 
 template <typename T>
 class Array

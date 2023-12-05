@@ -26,7 +26,7 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		cout << "Not found" << endl;
+		cerr << "Not found" << endl;
 	}
 	printTitle("Test 2: List");
 	std::list<int> l;
@@ -39,7 +39,7 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		cout << "Not found" << endl;
+		cerr << "Not found" << endl;
 	}
 	printTitle("Test 3: deque");
 	std::deque<int> e;
@@ -52,7 +52,7 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		cout << "Not found" << endl;
+		cerr << "Not found" << endl;
 	}
 	return 0;
 }
