@@ -2,10 +2,10 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
-# include <iostream>
-# include <list>
-# include <algorithm>
-# include <exception>
+#include <iostream>
+#include <list>
+#include <algorithm>
+#include <exception>
 
 using std::cout;
 using std::endl;
@@ -15,8 +15,8 @@ using std::cerr;
 class Span
 {
 	private:
-		unsigned int		_N;
-		list<int>			_list;
+		unsigned int	_N;
+		list<int>		_list;
 		Span();
 	public:
 		Span(unsigned int N);

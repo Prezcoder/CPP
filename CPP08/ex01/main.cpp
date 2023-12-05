@@ -34,8 +34,8 @@ int	main(void)
 	printTitle("Test 2: Shortest and longest span");
 	try
 	{
-		cout << "Longest span: " << span.longestSpan() << endl;
 		cout << "Shortest span: " << span.shortestSpan() << endl;
+		cout << "Longest span: " << span.longestSpan() << endl;
 	}
 	catch (std::exception &e)
 	{
@@ -53,11 +53,11 @@ int	main(void)
 	printTitle("Test 4: Creating a Span with iterators");
 	try 
 	{
-		list<int>    l( 10000 );
-		std::srand( time ( NULL ) );
-		std::generate( l.begin(), l.end(), std::rand );
-		Span span2( l.size() );
-		span2.addNumber( l.begin(), l.end() );
+		list<int>	l(10000);
+		std::srand(time(NULL));
+		std::generate(l.begin(), l.end(), std::rand);
+		Span span2(l.size());
+		span2.addNumber(l.begin(), l.end());
 		cout << "Longest span: " << span2.longestSpan() << endl;
 		cout << "Shortest span: " << span2.shortestSpan() << endl;
 	}
