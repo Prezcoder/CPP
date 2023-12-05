@@ -58,8 +58,8 @@ int	main(void)
 		std::generate(l.begin(), l.end(), std::rand);
 		Span span2(l.size());
 		span2.addNumber(l.begin(), l.end());
-		cout << "Longest span: " << span2.longestSpan() << endl;
 		cout << "Shortest span: " << span2.shortestSpan() << endl;
+		cout << "Longest span: " << span2.longestSpan() << endl;
 	}
 	catch ( std::exception& e ) 
 	{

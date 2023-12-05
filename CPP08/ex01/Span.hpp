@@ -6,6 +6,8 @@
 #include <list>
 #include <algorithm>
 #include <exception>
+#include <cstdlib>
+#include <ctime>
 
 using std::cout;
 using std::endl;
@@ -30,7 +32,6 @@ class Span
 		unsigned int	longestSpan() const;
 
 		const list<int>	&getList() const;
-
 };
 
 std::ostream& operator<<( std::ostream&, const Span& );
