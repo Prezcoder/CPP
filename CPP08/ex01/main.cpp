@@ -68,7 +68,7 @@ int	main(void)
 	printTitle("Test 5: Copy constructor");
 	Span span3 = Span(span);
 	cout << "List: " << span3 << endl;
-	printTitle("Test 6: Assignation operator");
+	// printTitle("Test 6: Assignation operator");
 	Span span4 = span;
 	cout << "List: " << span4 << endl;
 	printTitle("Test 7: Creating a Span with size of 0");

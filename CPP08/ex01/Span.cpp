@@ -7,7 +7,7 @@ Span::Span() : _N(0) {
 Span::Span(unsigned int N) : _N(N) {
 }
 
-Span::Span(const Span &copy) {
+Span::Span(const Span &copy) : _N(copy._N), _list(copy._list) {
 	*this = copy;
 }
 
@@ -30,7 +30,7 @@ void	Span::addNumber(int number) {
 }
 
 void	Span::addNumber(list<int>::const_iterator begin, list<int>::const_iterator end) {
-	if (_list.size() > _N)
+	if (_list.size() + std::distance(begin, end) > _N)
 		throw std::out_of_range("List is full");
 	_list.insert(_list.end(), begin, end);
 }
