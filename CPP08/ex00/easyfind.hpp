@@ -8,6 +8,7 @@
 #include <list>
 #include <deque>
 #include <stdexcept>
+#include <exception>
 
 using std::cout;
 using std::endl;

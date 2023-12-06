@@ -35,6 +35,7 @@ int	main()
 		cout << *it << " ";
 		++it;
 	}
+	std::stack<int> s(mstack);
 	cout << endl;
 	printTitle("Test 2: Creating a copy MutantStack with iterators");
 	MutantStack<int> mstack2(mstack);
@@ -81,5 +82,7 @@ int	main()
 		cout << *it4 << " ";
 		++it4;
 	}
+	std::list<int> l(list);
 	cout << endl;
+	return (0);
 }
