@@ -7,7 +7,7 @@ Span::Span() : _N(0) {
 Span::Span(unsigned int N) : _N(N) {
 }
 
-Span::Span(const Span &copy) : _N(copy._N), _list(copy._list) {
+Span::Span(const Span &copy) {
 	*this = copy;
 }
 

@@ -3,6 +3,8 @@
 # define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <map>
+#include <string>
 
 using std::string;
 using std::cout;
@@ -19,6 +21,7 @@ class BitcoinExchange
 		
 
 	private:
+		std::map<std::string, double> _data;
 
 };
 
