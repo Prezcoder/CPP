@@ -16,6 +16,7 @@ class BitcoinExchange
 		~BitcoinExchange();
 
 		BitcoinExchange &operator=(const BitcoinExchange &copy);
+		
 
 	private:
 
