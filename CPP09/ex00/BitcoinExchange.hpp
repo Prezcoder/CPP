@@ -36,7 +36,6 @@ class BitcoinExchange
 
 	private:
 		std::map<std::string, double> _dataFromTheCSVFile;
-		std::map<std::string, double> _dataFromTheInputFile;
 		std::ifstream _fileFromInput;
 
 };
