@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include <algorithm>
 
 using std::string;
 using std::cout;
@@ -26,8 +27,6 @@ class BitcoinExchange
 
 		void	readInput(char *argv);
 		void	readCSV();
-		double	findRate(string date, std::map<std::string, double> data);
-		string 	moveDateBack(const string& date);
 
 		// a fonction to check if the date is valid
 		bool	isDateValid(const string& date);

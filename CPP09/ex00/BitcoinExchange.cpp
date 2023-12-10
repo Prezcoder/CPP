@@ -72,8 +72,12 @@ void	BitcoinExchange::readInput(char *argv)
 		else if (stod(value) > 1000)
 			cout << "Error: too large a number." << endl;
 		else if (stod(value) < 1000 || stod(value) > 0) {
-			double multiplication = stod(value) * findRate(date, _dataFromTheCSVFile);
-			// printf("%f", findRate(date, _dataFromTheCSVFile));
+			std::map<std::string, double>::iterator it = _dataFromTheCSVFile.find(date);
+			it = _dataFromTheCSVFile.lower_bound(date);
+			if ((it != _dataFromTheCSVFile.begin() && it == _dataFromTheCSVFile.end()) || it->first > date)
+				it--;
+			double rate = it->second;
+			double multiplication = stod(value) * rate;
 			cout << date << " => " << value << " = " << multiplication << endl;
 		}
 		else
@@ -81,72 +85,6 @@ void	BitcoinExchange::readInput(char *argv)
 	}
 	fileFromInput.close();
 }
-
-double	BitcoinExchange::findRate(string date, std::map<std::string, double> data)
-{
-	std::map<std::string, double>::iterator it = data.find(date);
-		printf("ICI :%f ", it->second);
-	if (it != data.end())
-		{return (it->second);
-		}
-	else
-	{
-		string previousDate = moveDateBack(date);
-		if (previousDate != "not valid date")
-			return 0;
-		printf("ICI2 :%s", previousDate.c_str());
-		return (findRate(previousDate, data));
-	}
-}
-
-string	BitcoinExchange::moveDateBack(const string& date)
-{
-	int year, month, day;
-	sscanf(date.c_str(), "%d-%d-%d", &year, &month, &day);
-
-	int prev_day = day - 1;
-	int prev_month = month;
-	int prev_year = year;
-	if (prev_day == 0)
-	{
-		prev_month = month - 1;
-		if (prev_month == 0)
-		{
-			prev_month = 12;
-			prev_year = year - 1;
-			if (prev_year < 2009)
-				return ("not valid date");
-		}
-		switch (prev_month)
-		{
-		case 2:
-			if (prev_year % 4 == 0 && (prev_year % 100 != 0 || prev_year % 400 == 0))
-				prev_day = 29;
-			else
-				prev_day = 28;
-			break;
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			prev_day = 30;
-			break;
-		default:
-			prev_day = 31;
-		}
-	}
-	string prev_date = std::to_string(prev_year) + "-";
-	if (prev_month < 10)
-		prev_date += "0" + std::to_string(prev_month);
-	else
-		prev_date += std::to_string(prev_month);
-	if (prev_day < 10)
-		prev_date += "-0" + std::to_string(prev_day);
-	else
-		prev_date += "-" + std::to_string(prev_day);
-	return (prev_date);
-}
-
 
 bool	BitcoinExchange::isDateValid(const string& date)
 {

@@ -70,6 +70,7 @@
         "charconv": "cpp",
         "clocale": "cpp",
         "variant": "cpp",
-        "__memory": "cpp"
+        "__memory": "cpp",
+        "map": "cpp"
     }
 }
