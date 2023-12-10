@@ -7,14 +7,13 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <iomanip>
 #include <algorithm>
 
-using std::string;
 using std::cout;
 using std::endl;
-using std::getline;
 using std::cerr;
+using std::string;
+using std::getline;
 
 class BitcoinExchange
 {
@@ -28,16 +27,12 @@ class BitcoinExchange
 		void	readInput(char *argv);
 		void	readCSV();
 
-		// a fonction to check if the date is valid
 		bool	isDateValid(const string& date);
-		// a fonction to check if the price is valid and between 0 and 100000
 		bool	isPriceValid(const string& value);
 
-
 	private:
-		std::map<std::string, double> _dataFromTheCSVFile;
+		std::map<string, double> _dataFromTheCSVFile;
 		std::ifstream _fileFromInput;
-
 };
 
 #endif

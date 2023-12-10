@@ -8,7 +8,6 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) {
-	// cout << "BitcoinExchange assignation operator called" << endl;
 	if (this != &copy)
 	{
 		_dataFromTheCSVFile = copy._dataFromTheCSVFile;
@@ -32,6 +31,7 @@ void	BitcoinExchange::readCSV() {
 			_dataFromTheCSVFile[date] = std::stod(rate);
 		}
 	}
+	fileFromCSV.close();
 }
 
 void	BitcoinExchange::readInput(char *argv) {
@@ -56,7 +56,7 @@ void	BitcoinExchange::readInput(char *argv) {
 		else if (stod(value) > 1000)
 			cerr << "Error: too large a number." << endl;
 		else if (stod(value) < 1000 || stod(value) > 0) {
-			std::map<std::string, double>::iterator it = _dataFromTheCSVFile.find(date);
+			std::map<string, double>::iterator it = _dataFromTheCSVFile.find(date);
 			it = _dataFromTheCSVFile.lower_bound(date);
 			if ((it != _dataFromTheCSVFile.begin() && it == _dataFromTheCSVFile.end()) || it->first > date)
 				it--;
