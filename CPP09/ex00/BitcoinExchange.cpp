@@ -73,6 +73,16 @@ void	BitcoinExchange::printingResults(const string &date, const string& value) {
 	cout << date << " => " << value << " = " << multiplication << endl;
 }
 
+bool	BitcoinExchange::findMoreThanOneDot(string value) {
+	size_t dotIndex = value.find('.');
+	if (dotIndex != string::npos) {
+		size_t nextDotIndex = value.find('.', dotIndex + 1);
+		if (nextDotIndex != string::npos)
+			return false;
+	}
+	return true;
+}
+
 void	BitcoinExchange::parseInputFile() {
 	string line, date, value;
 
@@ -83,6 +93,8 @@ void	BitcoinExchange::parseInputFile() {
 		char separator;
 		if (!(ss >> date >> separator >> value) || separator != '|')
 			cerr << "Error: bad input => " << date << endl;
+		else if (!findMoreThanOneDot(value))
+			cerr << "Error: More than one '.' => " << value << endl;
 		else if (!isDateValid(date) || !isPriceValid(value))
 			cerr << "Error: bad input => " << date << endl;
 		else if (stod(value) < 0)

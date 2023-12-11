@@ -30,6 +30,7 @@ class BitcoinExchange
 		void	createMapWithCSV();
 		void	readInputFile(char *argv);
 		void	parseInputFile();
+		bool	findMoreThanOneDot(string value);
 		void	printingResults(const string &date, const string& value);
 		bool	isDateValid(const string& date);
 		bool	isPriceValid(const string& value);
