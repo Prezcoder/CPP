@@ -63,7 +63,7 @@ void BitcoinExchange::readInputFile(char *argv) {
 	}
 }
 
-void	BitcoinExchange::printingResults(string date, string value) {
+void	BitcoinExchange::printingResults(const string &date, const string& value) {
 	std::map<string, double>::iterator it = _dataFromTheCSVFile.find(date);
 	it = _dataFromTheCSVFile.lower_bound(date);
 	if ((it != _dataFromTheCSVFile.begin() && it == _dataFromTheCSVFile.end()) || it->first > date)
