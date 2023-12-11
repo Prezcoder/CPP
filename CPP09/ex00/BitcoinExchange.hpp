@@ -14,6 +14,7 @@ using std::endl;
 using std::cerr;
 using std::string;
 using std::getline;
+using std::stod;
 
 class BitcoinExchange
 {
