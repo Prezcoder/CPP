@@ -40,7 +40,7 @@ void	BitcoinExchange::createMapWithCSV() {
 	
 	getline(_fileFromCSV, line);
 	if (line.compare("date,exchange_rate"))
-		cerr << "Error: First line of file is not 'date,exchange_rate'. Might not be a valid file." << endl;
+		cerr << "Error: First line of file is not 'date,exchange_rate'. Might not be a valid file. Please verify." << endl;
 	while (getline(_fileFromCSV, line))
 	{
 		std::stringstream ss(line);
@@ -92,7 +92,7 @@ void	BitcoinExchange::parseInputFile() {
 
 	getline(_fileFromInput, line);
 	if (line.compare("date | value"))
-		cerr << "Error: First line of file is not 'date | value'. Might not be a valid file." << endl;
+		cerr << "Error: First line of file is not 'date | value'. Might not be a valid file. Please verify." << endl;
 	while (getline(_fileFromInput, line))
 	{
 		std::stringstream ss(line);
