@@ -66,6 +66,8 @@ void RPN::convertToRPN(const string& input) {
 }
 
 void	RPN::printResult() {
+	if (_numbers.size() != 1)
+		cerr << "Error: Incorrect RPN expression." << endl;
 	if (_numbers.size() == 1)
 		cout << _numbers.top() << endl;
 }

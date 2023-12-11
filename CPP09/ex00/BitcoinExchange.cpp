@@ -136,7 +136,7 @@ bool	BitcoinExchange::isDateValid(const string& date) {
 }
 
 bool	BitcoinExchange::isPriceValid(const string& value) {
-	try{
+	try {
 		stod(value);
 	}
 	catch (const std::exception& e) {

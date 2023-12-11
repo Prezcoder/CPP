@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stack>
 #include <algorithm>
+#include <sstream>
 
 using std::cout;
 using std::cerr;
