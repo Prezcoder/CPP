@@ -71,6 +71,7 @@
         "clocale": "cpp",
         "variant": "cpp",
         "__memory": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "__tree": "cpp"
     }
 }

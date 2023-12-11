@@ -17,13 +17,31 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
-void	BitcoinExchange::readCSV() {
+void BitcoinExchange::bitcoinExchanger(char *argv) {
+	readCSVFile();
+	createMapWithCSV();
+	readInputFile(argv);
+	parseInputFile();
+}
+
+void	BitcoinExchange::readCSVFile() {
+	try {
+		_fileFromCSV.open("data.csv");
+		if (!_fileFromCSV.is_open())
+			throw std::invalid_argument("could not open file.");
+	}
+	catch(std::exception &e) {
+		cerr << "Error : " << e.what() << endl;
+	}
+}
+
+void	BitcoinExchange::createMapWithCSV() {
 	string line, date, rate;
-	std::ifstream fileFromCSV("data.csv");
-	getline(fileFromCSV, line);
-	if (fileFromCSV.is_open())
+	
+	getline(_fileFromCSV, line);
+	if (_fileFromCSV.is_open())
 	{
-		while (getline(fileFromCSV, line))
+		while (getline(_fileFromCSV, line))
 		{
 			std::stringstream ss(line);
 			getline(ss, date, ',');
@@ -31,19 +49,35 @@ void	BitcoinExchange::readCSV() {
 			_dataFromTheCSVFile[date] = std::stod(rate);
 		}
 	}
-	fileFromCSV.close();
+	_fileFromCSV.close();
 }
 
-void	BitcoinExchange::readInput(char *argv) {
-	string line, date, value;
-	std::ifstream fileFromInput(argv);
-	if (!fileFromInput.is_open())
-	{
-		cerr << "Error: could not open file." << endl;
-		exit (1);
+void BitcoinExchange::readInputFile(char *argv) {
+	try {
+		_fileFromInput.open(argv);
+		if (!_fileFromInput.is_open())
+			throw std::invalid_argument("could not open file.");
 	}
-	getline(fileFromInput, line);
-	while (getline(fileFromInput, line))
+	catch(std::exception &e) {
+		cerr << "Error : " << e.what() << endl;
+	}
+}
+
+void	BitcoinExchange::printingResults(string date, string value) {
+	std::map<string, double>::iterator it = _dataFromTheCSVFile.find(date);
+	it = _dataFromTheCSVFile.lower_bound(date);
+	if ((it != _dataFromTheCSVFile.begin() && it == _dataFromTheCSVFile.end()) || it->first > date)
+		it--;
+	double rate = it->second;
+	double multiplication = stod(value) * rate;
+	cout << date << " => " << value << " = " << multiplication << endl;
+}
+
+void	BitcoinExchange::parseInputFile() {
+	string line, date, value;
+
+	getline(_fileFromInput, line);
+	while (getline(_fileFromInput, line))
 	{
 		std::stringstream ss(line);
 		char separator;
@@ -55,19 +89,12 @@ void	BitcoinExchange::readInput(char *argv) {
 			cerr << "Error: not a positive number." << endl;
 		else if (stod(value) > 1000)
 			cerr << "Error: too large a number." << endl;
-		else if (stod(value) < 1000 || stod(value) > 0) {
-			std::map<string, double>::iterator it = _dataFromTheCSVFile.find(date);
-			it = _dataFromTheCSVFile.lower_bound(date);
-			if ((it != _dataFromTheCSVFile.begin() && it == _dataFromTheCSVFile.end()) || it->first > date)
-				it--;
-			double rate = it->second;
-			double multiplication = stod(value) * rate;
-			cout << date << " => " << value << " = " << multiplication << endl;
-		}
+		else if (stod(value) < 1000 || stod(value) > 0) 
+			printingResults(date, value);
 		else
 			cerr << "Error: bad input => " << date << endl;
 	}
-	fileFromInput.close();
+	_fileFromInput.close();
 }
 
 bool isLeapYear(int year) {
