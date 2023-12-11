@@ -25,13 +25,13 @@ class BitcoinExchange
 
 		BitcoinExchange &operator=(const BitcoinExchange &copy);
 
-		void	bitcoinExchanger(char *argv);
+		void	bitcoinExchanger(const string& filename);
 		void	readCSVFile();
 		void	createMapWithCSV();
-		void	readInputFile(char *argv);
+		void	readInputFile(const string& filename);
 		void	parseInputFile();
-		bool	findMoreThanOneDot(string value);
-		void	printingResults(const string &date, const string& value);
+		bool	findMoreThanOneDot(const string& value);
+		void	printingResults(const string& date, const string& value);
 		bool	isDateValid(const string& date);
 		bool	isPriceValid(const string& value);
 

@@ -1,26 +1,27 @@
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() {}
+BitcoinExchange::BitcoinExchange()  : _fileFromInput(), _fileFromCSV() {}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
-	*this = copy;
-}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) : _dataFromTheCSVFile(copy._dataFromTheCSVFile) {}
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) {
 	if (this != &copy)
-	{
 		_dataFromTheCSVFile = copy._dataFromTheCSVFile;
-	}
 	return (*this);
 }
 
-BitcoinExchange::~BitcoinExchange() {}
+BitcoinExchange::~BitcoinExchange() {
+	if (_fileFromCSV.is_open())
+		_fileFromCSV.close();
+	if (_fileFromInput.is_open())
+		_fileFromInput.close();
+}
 
-void BitcoinExchange::bitcoinExchanger(char *argv) {
+void BitcoinExchange::bitcoinExchanger(const string& filename) {
 	readCSVFile();
 	createMapWithCSV();
-	readInputFile(argv);
+	readInputFile(filename);
 	parseInputFile();
 }
 
@@ -28,7 +29,7 @@ void	BitcoinExchange::readCSVFile() {
 	try {
 		_fileFromCSV.open("data.csv");
 		if (!_fileFromCSV.is_open())
-			throw std::invalid_argument("could not open file.");
+			throw std::invalid_argument("could not open file 'data.csv'.");
 	}
 	catch(std::exception &e) {
 		cerr << "Error : " << e.what() << endl;
@@ -37,10 +38,11 @@ void	BitcoinExchange::readCSVFile() {
 
 void	BitcoinExchange::createMapWithCSV() {
 	string line, date, rate;
+	const string CSV_HEADER = "date,exchange_rate";
 	
 	getline(_fileFromCSV, line);
-	if (line.compare("date,exchange_rate"))
-		cerr << "Error: First line of file is not 'date,exchange_rate'. Might not be a valid file. Please verify." << endl;
+	if (line.compare(CSV_HEADER))
+		cerr << "Error: First line of file is not '" << CSV_HEADER << "'. Might not be a valid file. Please verify." << endl;
 	while (getline(_fileFromCSV, line))
 	{
 		std::stringstream ss(line);
@@ -53,31 +55,30 @@ void	BitcoinExchange::createMapWithCSV() {
 		else
 			_dataFromTheCSVFile[date] = std::stod(rate);
 	}
-	_fileFromCSV.close();
 }
 
-void BitcoinExchange::readInputFile(char *argv) {
+void BitcoinExchange::readInputFile(const string& filename) {
 	try {
-		_fileFromInput.open(argv);
+		_fileFromInput.open(filename);
 		if (!_fileFromInput.is_open())
-			throw std::invalid_argument("could not open file.");
+			throw std::invalid_argument("could not open input file.");
 	}
 	catch(std::exception &e) {
 		cerr << "Error : " << e.what() << endl;
 	}
 }
 
-void	BitcoinExchange::printingResults(const string &date, const string& value) {
-	std::map<string, double>::iterator it = _dataFromTheCSVFile.find(date);
+void	BitcoinExchange::printingResults(const string& date, const string& value) {
+	std::map<string, double>::const_iterator it = _dataFromTheCSVFile.find(date);
 	it = _dataFromTheCSVFile.lower_bound(date);
-	if ((it != _dataFromTheCSVFile.begin() && it == _dataFromTheCSVFile.end()) || it->first > date)
+	if (it != _dataFromTheCSVFile.begin() || it->first > date)
 		it--;
 	double rate = it->second;
 	double multiplication = stod(value) * rate;
 	cout << date << " => " << value << " = " << multiplication << endl;
 }
 
-bool	BitcoinExchange::findMoreThanOneDot(string value) {
+bool	BitcoinExchange::findMoreThanOneDot(const string& value) {
 	size_t dotIndex = value.find('.');
 	if (dotIndex != string::npos) {
 		size_t nextDotIndex = value.find('.', dotIndex + 1);
@@ -89,10 +90,11 @@ bool	BitcoinExchange::findMoreThanOneDot(string value) {
 
 void	BitcoinExchange::parseInputFile() {
 	string line, date, value;
+	const string INPUT_HEADER = "date | value";
 
 	getline(_fileFromInput, line);
-	if (line.compare("date | value"))
-		cerr << "Error: First line of file is not 'date | value'. Might not be a valid file. Please verify." << endl;
+	if (line.compare(INPUT_HEADER))
+		cerr << "Error: First line of file is not '" << INPUT_HEADER << "'. Might not be a valid file. Please verify." << endl;
 	while (getline(_fileFromInput, line))
 	{
 		std::stringstream ss(line);
@@ -112,7 +114,6 @@ void	BitcoinExchange::parseInputFile() {
 		else
 			cerr << "Error: bad input => " << date << endl;
 	}
-	_fileFromInput.close();
 }
 
 bool isLeapYear(int year) {
