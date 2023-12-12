@@ -71,7 +71,7 @@ void BitcoinExchange::readInputFile(const string& filename) {
 void	BitcoinExchange::printingResults(const string& date, const string& value) {
 	std::map<string, double>::const_iterator it = _dataFromTheCSVFile.find(date);
 	it = _dataFromTheCSVFile.lower_bound(date);
-	if (it != _dataFromTheCSVFile.begin() || it->first > date)
+	if (it == _dataFromTheCSVFile.end() || it->first > date)
 		it--;
 	double rate = it->second;
 	double multiplication = stod(value) * rate;
