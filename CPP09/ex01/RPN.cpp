@@ -20,7 +20,7 @@ void RPN::handleDigit(char digit) {
 
 void RPN::handleOperator(char operatorChar) {
 	if (_numbers.size() < 2) {
-		cerr << "Error: Insufficient operands for operator " << operatorChar << endl;
+		cout << "Error: Insufficient operands for operator " << operatorChar << endl;
 		exit(1);
 	}
 	int a = _numbers.top();
@@ -35,17 +35,19 @@ void RPN::handleOperator(char operatorChar) {
 		case '/':
 			if (a != 0)
 				_numbers.push(b / a);
-			else
-				cerr << "Error: Division by zero" << endl;
+			else {
+				cout << "Error: Division by zero" << endl;
+				exit(1);
+			}
 			break;
 		default:
-			cerr << "Error: Invalid operator" << endl;
+			cout << "Error: Invalid operator" << endl;
 			break;
 	}
 }
 
 void RPN::handleInvalidChar() {
-	cerr << "Error: Invalid expression" << endl;
+	cout << "Error: Invalid expression" << endl;
 	exit(1);
 }
 
@@ -55,8 +57,7 @@ void RPN::convertToRPN(const string& input) {
 
 		if (isdigit(currentChar))
 			handleDigit(currentChar);
-		else if (currentChar == '+' || currentChar == '-' || currentChar == '*'
-				|| currentChar == '/' || currentChar == '%')
+		else if (currentChar == '+' || currentChar == '-' || currentChar == '*' || currentChar == '/')
 			handleOperator(currentChar);
 		else if (currentChar == ' ')
 			continue;
@@ -67,7 +68,7 @@ void RPN::convertToRPN(const string& input) {
 
 void	RPN::printResult() {
 	if (_numbers.size() != 1)
-		cerr << "Error: Incorrect RPN expression." << endl;
+		cout << "Error: Incorrect RPN expression." << endl;
 	if (_numbers.size() == 1)
 		cout << _numbers.top() << endl;
 }

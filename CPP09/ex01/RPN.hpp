@@ -22,13 +22,13 @@ class RPN
 		RPN &operator=(const RPN &copy);
 
 		void	convertToRPN(const string& expression);
+		void	printResult();
+	private:
+		std::stack<int>	_numbers;
+
 		void	handleDigit(char digit);
 		void	handleOperator(char op);
 		void	handleInvalidChar();
-		void	printResult();
-
-	private:
-		std::stack<int>	_numbers;
 };
 
 #endif

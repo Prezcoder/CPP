@@ -20,12 +20,6 @@ class PmergeMe
 		~PmergeMe();
 		PmergeMe &operator=(const PmergeMe &copy);
 
-		// merge-sort algorithm that takes numbers from the argv
-		list<int> operator()(list<int> &a, list<int> &b);
-		
-
-		// merge-sort algorithm for vectors that takes numbers from the argv
-		vector<int> operator()(vector<int> &a, vector<int> &b);
 };
 
 #endif

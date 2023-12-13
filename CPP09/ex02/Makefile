@@ -2,7 +2,7 @@
 NAME = PMERGEME
 
 SRCS =	main.cpp			\
-		PmergeMe.cpp	\
+		# PmergeMe.cpp	\
 
 OBJS_DIR = ./obj/
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)%.o)
