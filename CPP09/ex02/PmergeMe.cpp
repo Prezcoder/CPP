@@ -13,127 +13,74 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &copy) {
 	return *this;
 }
 
-// Vector
-bool pairComparator(const pair<int, int>& a, const pair<int, int>& b) {
-	return a.first < b.first;
-}
-
-void PmergeMe::mergeSortPairs(vector<pair<int, int> >& arr) {
-	for (vector<pair<int, int> >::iterator it = arr.begin(); it != arr.end(); ++it) {
-		std::sort(&(*it), &(*it) + 1, pairComparator);
+static int jacobsthal(int n) {
+	if (n == 0) return 0;
+	if (n == 1) return 1;
+	int prev = 0;
+	int current = 1;
+	
+	for (int i = 2; i <= n; ++i) {
+		int next = current + 2 * prev;
+		prev = current;
+		current = next;
 	}
+	return current;
 }
 
-vector<int> PmergeMe::mergeSortedPairs(const vector<pair<int, int> >& arr) {
-    vector<int> sortedFirst;
-    vector<int> sortedSecond;
-
-    // Extraire les 'first' et 'second' et les trier individuellement
-    for (vector<pair<int, int> >::size_type i = 0; i < arr.size(); ++i) {
-        sortedFirst.push_back(arr[i].first);
-        sortedSecond.push_back(arr[i].second);
-    }
-
-    // Trier les listes individuelles
-    std::sort(sortedFirst.begin(), sortedFirst.end());
-    std::sort(sortedSecond.begin(), sortedSecond.end());
-
-    // Fusionner les deux listes triées
-    vector<int> result;
-    vector<int>::size_type i = 0;
-    vector<int>::size_type j = 0;
-
-    while (i < sortedFirst.size() && j < sortedSecond.size()) {
-        if (sortedFirst[i] < sortedSecond[j]) {
-            result.push_back(sortedFirst[i++]);
-        } else {
-            result.push_back(sortedSecond[j++]);
-        }
-    }
-
-    // Ajouter les éléments restants, s'il y en a
-    while (i < sortedFirst.size()) {
-        result.push_back(sortedFirst[i++]);
-    }
-
-    while (j < sortedSecond.size()) {
-        result.push_back(sortedSecond[j++]);
-    }
-
-    return result;
+size_t PmergeMe::findInsertPosition(const vector<int>& arr, int value) {
+	return std::lower_bound(arr.begin(), arr.end(), value) - arr.begin();
 }
 
-vector<int> PmergeMe::mergePairs(const vector<int>& arr1, const vector<int>& arr2) {
-	vector<int> merged;
-	vector<int>::const_iterator it1 = arr1.begin();
-	vector<int>::const_iterator it2 = arr2.begin();
+void PmergeMe::combineAndSort(vector<int>& highest, const vector<int>& lowest) {
+	size_t highestIndex = 0;
+	size_t lowestIndex = 0;
+	vector<int> result;
 
-	while (it1 != arr1.end() && it2 != arr2.end()) {
-		if (*it1 < *it2) {
-			merged.push_back(*it1);
-			++it1;
-		} else {
-			merged.push_back(*it2);
-			++it2;
+	while (lowestIndex < lowest.size() || highestIndex < highest.size()) {
+		int jacobsthalLowest = (lowestIndex < lowest.size()) ? jacobsthal(lowestIndex) : std::numeric_limits<int>::max();
+		int jacobsthalHighest = (highestIndex < highest.size()) ? jacobsthal(highestIndex) : std::numeric_limits<int>::max();
+		if (jacobsthalLowest < jacobsthalHighest) {
+			size_t insertPos = findInsertPosition(result, lowest[lowestIndex]);
+			result.insert(result.begin() + insertPos, lowest[lowestIndex]);
+			++lowestIndex;
+		}
+		else {
+			result.push_back(highest[highestIndex]);
+			++highestIndex;
 		}
 	}
-	while (it1 != arr1.end()) {
-		merged.push_back(*it1);
-		++it1;
-	}
-	while (it2 != arr2.end()) {
-		merged.push_back(*it2);
-		++it2;
-	}
-	return merged;
+	highest.swap(result);
 }
 
-// List
-void PmergeMe::insertionSortList(list<pair<int, int> >& arr) {
-	for (list<pair<int, int> >::iterator it = ++arr.begin(); it != arr.end(); ++it) {
-		pair<int, int> key = *it;
-		list<pair<int, int> >::iterator j = it;
-		while (j != arr.begin() && key.second < (--j)->second) {
-			std::advance(j, 1);
-			*j = *--j;
+void PmergeMe::mergeSortPairsHelper(vector<pair<int, int> >& arr) {
+	if (arr.size() > 1) {
+		for (size_t i = 0; i < arr.size(); ++i) {
+			if (arr[i].second != -1 && arr[i].first > arr[i].second)
+				std::swap(arr[i].first, arr[i].second);
 		}
-		*j = key;
+		bool swapped;
+		int maxIterations = arr.size();
+		int iterations = 0;
+		do {
+			swapped = false;
+			for (size_t i = 0; i < arr.size() - 1; ++i) {
+				if (arr[i].second > arr[i + 1].second || (arr[i].second == -1 && arr[i + 1].second != -1)) {
+					std::swap(arr[i], arr[i + 1]);
+					swapped = true;
+				}
+			}
+			iterations++;
+		} while (swapped && iterations < maxIterations);
 	}
 }
 
-void PmergeMe::mergeList(list<pair<int, int> >& arr, const list<pair<int, int> >& left, const list<pair<int, int> >& right) {
-	list<pair<int, int> >::iterator it = arr.begin();
-	list<pair<int, int> >::const_iterator leftIt = left.begin();
-	list<pair<int, int> >::const_iterator rightIt = right.begin();
+void PmergeMe::separateSecondsAndLowest(const vector<pair<int, int> >& arr, vector<int>& seconds, vector<int>& lowest) {
+	seconds.clear();
+	lowest.clear();
 
-	while (leftIt != left.end() && rightIt != right.end()) {
-		if (leftIt->second < rightIt->second)
-			*it++ = *leftIt++;
-		else
-			*it++ = *rightIt++;
+	for (size_t i = 0; i < arr.size(); ++i) {
+		if (arr[i].second != -1)
+			seconds.push_back(arr[i].second);
+		lowest.push_back(arr[i].first);
 	}
-	while (leftIt != left.end())
-		*it++ = *leftIt++;
-	while (rightIt != right.end())
-		*it++ = *rightIt++;
-}
-
-void PmergeMe::mergeInsertionSortList(list<pair<int, int> >& arr, uint32_t threshold) {
-	if (arr.size() > threshold) {
-		uint32_t mid = arr.size() / 2;
-		list<pair<int, int> > left(arr.begin(), arr.begin());
-		list<pair<int, int> > right(arr.begin(), arr.begin());
-		list<pair<int, int> >::iterator it = arr.begin();
-		for (uint32_t i = 0; i < mid; ++i) {
-			left.push_back(*it++);
-		}
-		for (uint32_t i = mid; i < arr.size(); ++i) {
-			right.push_back(*it++);
-		}
-		mergeInsertionSortList(left, threshold);
-		mergeInsertionSortList(right, threshold);
-		mergeList(arr, left, right);
-	}
-	else
-		insertionSortList(arr);
 }

@@ -25,16 +25,13 @@ class PmergeMe
 		PmergeMe(const PmergeMe &copy);
 		~PmergeMe();
 		PmergeMe &operator=(const PmergeMe &copy);
-		void mergeSortPairs(vector<std::pair<int, int> >& arr);
-		vector<int> mergePairs(const vector<int>& arr1, const vector<int>& arr2);
-		vector<int> mergeSortedPairs(const vector<pair<int, int> >& arr);
-		
-		void mergeInsertionSortList(list<pair<int, int> >& arr, uint32_t threshold);
-		
-	private:
 
-		void insertionSortList(list<pair<int, int> >& arr);
-		void mergeList(list<pair<int, int> >& arr, const list<pair<int, int> >& left, const list<pair<int, int> >& right);
+		void mergeSortPairsHelper(vector<pair<int, int> > &arr);
+		void separateSecondsAndLowest(const vector<pair<int, int> >& arr, vector<int>& seconds, vector<int>& lowest);
+		void combineAndSort(vector<int>& highest, const vector<int>& lowest);
+		size_t findInsertPosition(const vector<int>& arr, int value);
+
+	private:
 
 
 };
