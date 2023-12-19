@@ -77,7 +77,7 @@ void	BitcoinExchange::printingResults(const string& date, const string& value) {
 		it--;
 	double rate = it->second;
 	double multiplication = stod(value) * rate;
-	cout << date << " => " << stod(value) << " = " << multiplication << endl;
+	cout << date << " => " << std::fixed << std::setprecision(2) << stod(value) << " = " << multiplication << endl;
 }
 
 bool	BitcoinExchange::findMoreThanOneDot(const string& value) {
@@ -129,6 +129,8 @@ bool	BitcoinExchange::isDateValid(const string& date) {
 	char separator1, separator2;
 	std::istringstream ss(date);
 	ss >> year >> separator1 >> month >> separator2 >> day;
+	if (year < 2009 || (year <= 2009 && month < 01) || (year <= 2009 && month <= 01 && day < 02))
+		return (false);
 	if (ss.fail() || separator1 != '-' || separator2 != '-' || year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
 		return (false);
 	bool leap_year = isLeapYear(year);
